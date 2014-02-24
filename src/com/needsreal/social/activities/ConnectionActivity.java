@@ -27,7 +27,7 @@ public class ConnectionActivity extends Activity
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		
+		setContentView (R.layout.activity_connection);
 		// Button
 		final Button connectionButton= (Button) findViewById (R.id.connection_connection_button);
 		connectionButton.setOnClickListener (new View.OnClickListener ()
@@ -42,7 +42,7 @@ public class ConnectionActivity extends Activity
 		});
 		
 		
-		setContentView (R.layout.activity_connection);
+		
 	}
 
 	@Override
