@@ -1,6 +1,8 @@
-package com.needsreal.social;
+package com.needsreal.social.activities;
 
-import com.needsreal.social.activities.RegistrationActivity;
+import com.needsreal.social.R;
+import com.needsreal.social.R.id;
+import com.needsreal.social.R.layout;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -43,7 +45,7 @@ public class MainActivity extends Activity
 			public void onClick (View v)
 			{
 				Intent intent = new Intent (MainActivity.this,
-						RegistrationActivity.class); // TODO => activity
+						ConnectionActivity.class); 
 				startActivity (intent);
 			}
 		});
