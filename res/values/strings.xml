@@ -4,5 +4,8 @@
     <string name="app_name">NeedSReal</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="connection_button">Connection</string>
+    <string name="registration_button">Registration</string>
+    <string name="welcome_needsreal">Welcome to needSreal !</string>
 
 </resources>
