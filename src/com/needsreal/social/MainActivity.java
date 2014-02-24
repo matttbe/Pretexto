@@ -1,4 +1,4 @@
-package be.pretexto.social;
+package com.needsreal.social;
 
 import android.os.Bundle;
 import android.app.Activity;
