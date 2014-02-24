@@ -7,5 +7,9 @@
     <string name="connection_button">Connection</string>
     <string name="registration_button">Registration</string>
     <string name="welcome_needsreal">Welcome to needSreal !</string>
+    <string name="nickname">Nickname</string>
+    <string name="password">Password</string>
+    <string name="password_bis">Confirmation</string>
+    <string name="tos">Term Of Service</string>
 
 </resources>
