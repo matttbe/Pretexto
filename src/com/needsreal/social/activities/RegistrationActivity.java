@@ -17,14 +17,15 @@ public class RegistrationActivity extends Activity
 	protected void onCreate (Bundle savedInstanceState)
 	{
 		super.onCreate (savedInstanceState);
-		setContentView (R.layout.activity_registration);
 
 		requestWindowFeature (Window.FEATURE_NO_TITLE);
 		getWindow ().setFlags (WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		
+		setContentView (R.layout.activity_registration);
 
 		// Buttons
-		final Button registrationButton = (Button) findViewById (R.id.main_registration_button);
+		final Button registrationButton = (Button) findViewById (R.id.registration_button);
 		registrationButton.setOnClickListener (new View.OnClickListener ()
 		{
 			public void onClick (View v)
