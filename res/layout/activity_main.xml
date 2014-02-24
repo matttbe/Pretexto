@@ -8,7 +8,7 @@
     tools:context=".MainActivity" >
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/registration_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -28,14 +28,14 @@
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Button
-            android:id="@+id/connection_button"
+            android:id="@+id/main_connection_button"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="0.50"
             android:text="@string/connection_button" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/main_registration_button"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="0.50"
