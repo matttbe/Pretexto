@@ -31,7 +31,7 @@ public class RegistrationActivity extends Activity
 			public void onClick (View v)
 			{
 				Intent intent = new Intent (RegistrationActivity.this,
-						RegistrationActivity.class); // TODO => activity
+						MapMainActivity.class); // TODO => activity
 				startActivity (intent);
 			}
 		});

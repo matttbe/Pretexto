@@ -36,7 +36,7 @@ public class ConnectionActivity extends Activity
 			public void onClick (View v)
 			{
 				Intent intent = new Intent (ConnectionActivity.this,
-						RegistrationActivity.class); // TODO : connection event lead to gmap view
+						MapMainActivity.class); // TODO : connection event lead to gmap view
 				startActivity (intent);
 			}
 		});

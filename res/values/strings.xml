@@ -11,6 +11,6 @@
     <string name="password">Password</string>
     <string name="password_bis">Confirmation</string>
     <string name="tos">Term Of Service</string>
- 
+    <string name="title_activity_map_main">MapMainActivity</string>
 
 </resources>
