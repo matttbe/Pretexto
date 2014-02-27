@@ -36,4 +36,7 @@ public class RegistrationActivity extends Activity
 			}
 		});
 	}
+	
+	
+	
 }
