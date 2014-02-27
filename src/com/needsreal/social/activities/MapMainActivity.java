@@ -26,7 +26,6 @@ public class MapMainActivity extends Activity implements LocationListener
 		requestWindowFeature (Window.FEATURE_NO_TITLE);
 		getWindow ().setFlags (WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		setContentView (R.layout.activity_main);
 
 		setContentView (R.layout.activity_map_main);
 

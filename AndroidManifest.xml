@@ -12,13 +12,6 @@
         android:glEsVersion="0x00020000"
         android:required="true" />
 
-    <meta-data
-        android:name="com.google.android.maps.v2.API_KEY"
-        android:value="AIzaSyCjKOvjLZzn_y5rVHYE4kNW7lRpMVdYAFA" />
-    <meta-data
-        android:name="com.google.android.gms.version"
-        android:value="@integer/google_play_services_version" />
-
     <permission
         android:name="com.needsreal.social.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
@@ -58,5 +51,12 @@
             android:label="@string/title_activity_map_main" >
         </activity>
     </application>
+
+    <meta-data
+        android:name="com.google.android.maps.v2.API_KEY"
+        android:value="AIzaSyCjKOvjLZzn_y5rVHYE4kNW7lRpMVdYAFA" />
+    <meta-data
+        android:name="com.google.android.gms.version"
+        android:value="@integer/google_play_services_version" />
 
 </manifest>
