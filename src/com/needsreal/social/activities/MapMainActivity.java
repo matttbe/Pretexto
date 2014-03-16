@@ -1,22 +1,28 @@
 package com.needsreal.social.activities;
 
-import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.needsreal.social.R;
 
 
-public class MapMainActivity extends Activity implements LocationListener
+public class MapMainActivity extends FragmentActivity implements LocationListener
 {
-
 	private LocationManager locationManager;
+	private GoogleMap map;
+	private MapFragment mMapFragment;
 
+
+	
 	@Override
 	protected void onCreate (Bundle savedInstanceState)
 	{
@@ -28,6 +34,21 @@ public class MapMainActivity extends Activity implements LocationListener
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 		setContentView (R.layout.activity_map_main);
+
+
+		 mMapFragment = MapFragment.newInstance();
+		 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+		 fragmentTransaction.add(R.id.map, mMapFragment);
+		 fragmentTransaction.commit();
+		 map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+		 
+		 
+		
+		if(map != null){
+			map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+		}
+
+
 
 	}
 
@@ -52,13 +73,11 @@ public class MapMainActivity extends Activity implements LocationListener
 	{
 		super.onPause ();
 
-		// On appelle la méthode pour se désabonner
+
 		desabonnementGPS ();
 	}
 
-	/**
-	 * Méthode permettant de s'abonner à la localisation par GPS.
-	 */
+
 	public void abonnementGPS ()
 	{
 		// On s'abonne
