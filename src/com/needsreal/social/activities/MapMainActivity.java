@@ -6,6 +6,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -42,12 +43,8 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 		 fragmentTransaction.commit();
 		 map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 		 
-		 
-		
-		if(map != null){
-			map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-		}
-
+		map.setBuildingsEnabled (true);
+		map.setMyLocationEnabled (true);
 
 
 	}
