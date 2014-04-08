@@ -17,16 +17,17 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.needsreal.social.R;
+import com.needsreal.social.fragments.SearchBlockFragment;
 import com.needsreal.social.search.SearchItem;
 
 
-public class MapMainActivity extends FragmentActivity implements LocationListener
+public class MapMainActivity extends FragmentActivity implements
+		LocationListener
 {
 	private LocationManager locationManager;
 	private GoogleMap map;
+	private SearchBlockFragment sblock;
 	private Marker meMarker;
-
-
 
 	@Override
 	protected void onCreate (Bundle savedInstanceState)
@@ -48,7 +49,7 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 
 		SearchItem testSearchItem = new SearchItem (0, 50.6684991, 4.621698,
 				"Beau gosse", "Viens me rencontrer, moi, Julien le beau gosse");
-		map.addMarker(testSearchItem.getMarkerOptions ());
+		map.addMarker (testSearchItem.getMarkerOptions ());
 
 		meMarker = map.addMarker (new MarkerOptions ()
 				.title ("Vous êtes ici")
@@ -80,10 +81,8 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 	{
 		super.onPause ();
 
-
 		desabonnementGPS ();
 	}
-
 
 	public void abonnementGPS ()
 	{
@@ -112,7 +111,7 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 
 		Toast.makeText (this, msg.toString (), Toast.LENGTH_SHORT).show ();
 
-		//Mise à jour des coordonnées
+		// Mise à jour des coordonnées
 		final LatLng latLng = new LatLng (location.getLatitude (),
 				location.getLongitude ());
 		map.moveCamera (CameraUpdateFactory.newLatLngZoom (latLng, 15));
