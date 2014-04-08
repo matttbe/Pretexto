@@ -92,7 +92,7 @@ public class SearchItem
 		MarkerOptions markerOptions = new MarkerOptions ();
 		markerOptions.title(getName ());
 		markerOptions.position(getLocation ());
-		if (description != null)
+		if (shortDescription != null)
 			markerOptions.snippet (getShortDescription ());
 		return markerOptions;
 	}
