@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.needsreal.social.R;
 import com.needsreal.social.search.SearchItem;
@@ -47,19 +49,12 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 		
 		map = ((MapFragment) getFragmentManager ().findFragmentById (R.id.map))
 				.getMap ();
-		
-		
-
+		map.setIndoorEnabled (true);
 		map.setBuildingsEnabled (true);
 		map.setMyLocationEnabled (true);
-		
-		SearchItem testSearchItem = new SearchItem (0, 50.6684991, 4.621698,
-				"Beau gosse", "Viens me rencontrer, moi, Julien le beau gosse");
+		map.setOnCameraChangeListener (onCameraChangeListener);
+		map.getUiSettings ().setZoomControlsEnabled (false);
 
-		testSearchItem.addMarkerToMap (map);
-		// .icon (BitmapDescriptorFactory.defaultMarker
-		// (BitmapDescriptorFactory.HUE_AZURE))
-		
 		FragmentManager fm = getFragmentManager ();
 		fm.beginTransaction ()
 				.hide (getFragmentManager ()
@@ -97,7 +92,10 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 		}
 
 		if (lastKnowLocation != null)
+		{
 			moveCamera (lastKnowLocation, ZOOM_INIT);
+			updateMarkers (lastKnowLocation, true);
+		}
 	}
 
 	@Override
@@ -106,6 +104,8 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 		super.onPause ();
 		unregisterLocation ();
 	}
+
+	//_________________ GPS
 
 	private void registerGPS ()
 	{
@@ -130,6 +130,8 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 		locationManager.removeUpdates (this);
 	}
 
+	//________________ Utils
+
 	/**
 	 * Move camera to a location with a custom zoom
 	 * @param location the center position
@@ -143,6 +145,38 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 		map.moveCamera (CameraUpdateFactory.newLatLngZoom (latLng, zoom));
 	}
 
+	/**
+	 * Update the list of markers in the list
+	 * @param bForceUpdate
+	 */
+	private void updateMarkers (Location location, boolean bForceUpdate)
+	{
+		// TODO
+		SearchItem testSearchItem = new SearchItem (0, 50.6684991, 4.621698,
+				"Beau gosse", "Viens me rencontrer, moi, Julien le beau gosse");
+
+		testSearchItem.addMarkerToMap (map);
+		// .icon (BitmapDescriptorFactory.defaultMarker
+		// (BitmapDescriptorFactory.HUE_AZURE))
+	}
+
+	//________ LISTENER MAP
+
+	private OnCameraChangeListener onCameraChangeListener =
+			new OnCameraChangeListener()
+	{
+		
+		@Override
+		public void onCameraChange (CameraPosition position)
+		{
+			// TODO Auto-generated method stub
+			
+		}
+	};
+
+	/**
+	 * 
+	 */
 	@Override
 	public void onLocationChanged (final Location location)
 	{
