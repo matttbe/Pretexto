@@ -48,7 +48,7 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 
 		SearchItem testSearchItem = new SearchItem (0, 50.6684991, 4.621698,
 				"Beau gosse", "Viens me rencontrer, moi, Julien le beau gosse");
-		map.addMarker(testSearchItem.getMarkerOptions ());
+		testSearchItem.addMarkerToMap(map);
 
 		meMarker = map.addMarker (new MarkerOptions ()
 				.title ("Vous êtes ici")

@@ -1,6 +1,8 @@
 package com.needsreal.social.search;
 
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class SearchItem
@@ -11,6 +13,7 @@ public class SearchItem
 	private String name;
 	private String shortDescription;
 	private String description;
+	private Marker marker = null;
 
 	public SearchItem (int id, double latitude, double longitude, String name, String shortDescription)
 	{
@@ -87,7 +90,7 @@ public class SearchItem
 	/**
 	 * @return a MarkerOptions needed for creating a marker
 	 */
-	public MarkerOptions getMarkerOptions ()
+	private MarkerOptions getMarkerOptions ()
 	{
 		MarkerOptions markerOptions = new MarkerOptions ();
 		markerOptions.title(getName ());
@@ -95,5 +98,17 @@ public class SearchItem
 		if (shortDescription != null)
 			markerOptions.snippet (getShortDescription ());
 		return markerOptions;
+	}
+
+	/**
+	 * Add a marker with the info of this item if it doesn't exist yet
+	 * @param map where the marker will be added
+	 * @return the marker added to the map
+	 */
+	public Marker addMarkerToMap (GoogleMap map)
+	{
+		if (marker == null)
+			marker = map.addMarker (getMarkerOptions());
+		return marker;
 	}
 }
