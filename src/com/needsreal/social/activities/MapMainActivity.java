@@ -6,7 +6,6 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -23,7 +22,7 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 	private MapFragment mMapFragment;
 
 
-	
+
 	@Override
 	protected void onCreate (Bundle savedInstanceState)
 	{
@@ -37,14 +36,19 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 		setContentView (R.layout.activity_map_main);
 
 
-		 mMapFragment = MapFragment.newInstance();
-		 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-		 fragmentTransaction.add(R.id.map, mMapFragment);
-		 fragmentTransaction.commit();
-		 map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
-		 
+		mMapFragment = MapFragment.newInstance();
+		FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+		fragmentTransaction.add(R.id.map, mMapFragment);
+		fragmentTransaction.commit();
+		map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+
 		map.setBuildingsEnabled (true);
 		map.setMyLocationEnabled (true);
+		
+
+		
+	
+		
 
 
 	}
