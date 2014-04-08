@@ -12,19 +12,29 @@
         class="com.google.android.gms.maps.MapFragment"
         android:scrollbars="vertical" />
 
-    <fragment
-        android:id="@+id/search"
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:id="@+id/linearL1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:layout_margin="5dp"
-        class="com.needsreal.social.fragments.SearchFragment" />
-    <fragment
-        android:id="@+id/searchblock"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_margin="5dp"
-        class="com.needsreal.social.fragments.SearchBlockFragment" />
+        android:background="@android:color/white"
+        android:orientation="vertical" >
+
+        <fragment
+            android:id="@+id/search"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            class="com.needsreal.social.fragments.SearchFragment" />
+
+        <fragment
+            android:id="@+id/searchblock"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"
+            class="com.needsreal.social.fragments.SearchBlockFragment" />
+    </LinearLayout>
 
 </FrameLayout>
