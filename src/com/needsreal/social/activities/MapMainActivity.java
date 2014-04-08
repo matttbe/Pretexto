@@ -1,5 +1,6 @@
 package com.needsreal.social.activities;
 
+import android.app.FragmentManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -14,41 +15,44 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.needsreal.social.R;
-import com.needsreal.social.fragments.SearchBlockFragment;
 import com.needsreal.social.search.SearchItem;
 
 
-public class MapMainActivity extends FragmentActivity implements
-		LocationListener
+public class MapMainActivity extends FragmentActivity implements LocationListener
 {
 	private LocationManager locationManager;
 	private GoogleMap map;
-	private SearchBlockFragment sblock;
-
 	@Override
 	protected void onCreate (Bundle savedInstanceState)
 	{
 		super.onCreate (savedInstanceState);
-
+		
 		// Windows properties
 		requestWindowFeature (Window.FEATURE_NO_TITLE);
 		getWindow ().setFlags (WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+		
 		setContentView (R.layout.activity_map_main);
-
+		
 		map = ((MapFragment) getFragmentManager ().findFragmentById (R.id.map))
 				.getMap ();
+		
+		
 
 		map.setBuildingsEnabled (true);
 		map.setMyLocationEnabled (true);
-
+		
 		SearchItem testSearchItem = new SearchItem (0, 50.6684991, 4.621698,
 				"Beau gosse", "Viens me rencontrer, moi, Julien le beau gosse");
 
 		testSearchItem.addMarkerToMap (map);
 		// .icon (BitmapDescriptorFactory.defaultMarker
 		// (BitmapDescriptorFactory.HUE_AZURE))
+		
+		FragmentManager fm = getFragmentManager();
+		fm.beginTransaction()
+		          .hide(getFragmentManager ().findFragmentById (R.id.searchblock))
+		          .commit();
 
 	}
 
