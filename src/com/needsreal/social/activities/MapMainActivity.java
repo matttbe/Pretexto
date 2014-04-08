@@ -1,20 +1,23 @@
 package com.needsreal.social.activities;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.needsreal.social.R;
@@ -59,6 +62,18 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 		fm.beginTransaction ()
 				.hide (getFragmentManager ()
 						.findFragmentById (R.id.searchblock)).commit ();
+		
+		final ImageButton settingsButton= (ImageButton) findViewById (R.id.settingsButton);
+		settingsButton.setOnClickListener (new View.OnClickListener ()
+		
+		{
+			public void onClick (View v)
+			{
+				Intent intent = new Intent (MapMainActivity.this,
+						ConnectionActivity.class); // TODO : connection event lead to gmap view
+				startActivity (intent);
+			}
+		});
 
 	}
 

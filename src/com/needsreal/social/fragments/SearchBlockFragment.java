@@ -23,9 +23,17 @@ public class SearchBlockFragment extends Fragment
 
 		ListView LV = (ListView) V.findViewById (
 				R.id.previousSearchList);
-		String List[] = new String[2];
+		// TODO Link to DB
+		String List[] = new String[9];
 		List[0] = "Ju bogoss";
 		List[1] = "Mathieu Baerts - Lololol";
+		List[2] = "Mathieu Baerts - Lololol";
+		List[3] = "Mathieu Baerts - Lololol";
+		List[4] = "Mathieu Baerts - Lololol";
+		List[5] = "Mathieu Baerts - Lololol";
+		List[6] = "Mathieu Baerts - Lololol";
+		List[7] = "Mathieu Baerts - Lololol";
+		List[8] = "Mathieu Baerts - Lololol";
 		ArrayAdapter<String> aa = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, List);
 
 		LV.setAdapter (aa);
