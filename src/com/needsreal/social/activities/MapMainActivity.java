@@ -1,6 +1,5 @@
 package com.needsreal.social.activities;
 
-import android.app.FragmentTransaction;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -10,16 +9,22 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.needsreal.social.R;
+import com.needsreal.social.search.SearchItem;
 
 
 public class MapMainActivity extends FragmentActivity implements LocationListener
 {
 	private LocationManager locationManager;
 	private GoogleMap map;
-	private MapFragment mMapFragment;
+	private Marker meMarker;
 
 
 
@@ -35,21 +40,22 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 
 		setContentView (R.layout.activity_map_main);
 
-
-		mMapFragment = MapFragment.newInstance();
-		FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-		fragmentTransaction.add(R.id.map, mMapFragment);
-		fragmentTransaction.commit();
-		map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+		map = ((MapFragment) getFragmentManager ().findFragmentById (R.id.map))
+				.getMap ();
 
 		map.setBuildingsEnabled (true);
 		map.setMyLocationEnabled (true);
-		
 
-		
-	
-		
+		SearchItem testSearchItem = new SearchItem (0, 50.6684991, 4.621698,
+				"Beau gosse", "Viens me rencontrer, moi, Julien le beau gosse");
+		map.addMarker(testSearchItem.getMarkerOptions ());
 
+		meMarker = map.addMarker (new MarkerOptions ()
+				.title ("Vous êtes ici")
+				.position (new LatLng (0, 0))
+				.visible (false)
+				.icon (BitmapDescriptorFactory
+						.defaultMarker (BitmapDescriptorFactory.HUE_AZURE)));
 
 	}
 
@@ -105,6 +111,14 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 		msg.append (location.getLongitude ());
 
 		Toast.makeText (this, msg.toString (), Toast.LENGTH_SHORT).show ();
+
+		//Mise à jour des coordonnées
+		final LatLng latLng = new LatLng (location.getLatitude (),
+				location.getLongitude ());
+		map.moveCamera (CameraUpdateFactory.newLatLngZoom (latLng, 15));
+		meMarker.setPosition (latLng);
+		meMarker.setVisible (true);
+
 	}
 
 	@Override
