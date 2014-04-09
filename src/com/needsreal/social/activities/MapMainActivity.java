@@ -14,20 +14,20 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
-import com.google.android.gms.maps.model.LatLng;
 import com.needsreal.social.R;
-import com.needsreal.social.search.SearchItem;
+import com.needsreal.social.map.MapCamera;
+import com.needsreal.social.map.MapMarkers;
 
 
 public class MapMainActivity extends FragmentActivity implements LocationListener
 {
 	private LocationManager locationManager;
 	private GoogleMap map;
+	private MapMarkers markers;
 
 	private boolean isUsingGPS = false;
 	private boolean isUsingNetwork = false;
@@ -57,6 +57,7 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 		map.setMyLocationEnabled (true);
 		map.setOnCameraChangeListener (onCameraChangeListener);
 		map.getUiSettings ().setZoomControlsEnabled (false);
+		markers = new MapMarkers (map);
 
 		FragmentManager fm = getFragmentManager ();
 		fm.beginTransaction ()
@@ -108,8 +109,8 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 
 		if (lastKnowLocation != null)
 		{
-			moveCamera (lastKnowLocation, ZOOM_INIT);
-			updateMarkers (lastKnowLocation, true);
+			MapCamera.moveCamera (map, lastKnowLocation, ZOOM_INIT);
+			markers.updateMarkers (lastKnowLocation, true);
 		}
 	}
 
@@ -145,36 +146,6 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 		locationManager.removeUpdates (this);
 	}
 
-	//________________ Utils
-
-	/**
-	 * Move camera to a location with a custom zoom
-	 * @param location the center position
-	 * @param zoom between 2 and 21, see CameraUpdateFactory.newLatLngZoom
-	 */
-	private void moveCamera (final Location location, float zoom)
-	{
-		final LatLng latLng = new LatLng (location.getLatitude (),
-				location.getLongitude ());
-		Log.d ("GPS", "move camera to " + latLng.latitude + " " + latLng.longitude);
-		map.moveCamera (CameraUpdateFactory.newLatLngZoom (latLng, zoom));
-	}
-
-	/**
-	 * Update the list of markers in the list
-	 * @param bForceUpdate
-	 */
-	private void updateMarkers (Location location, boolean bForceUpdate)
-	{
-		// TODO
-		SearchItem testSearchItem = new SearchItem (0, 50.6684991, 4.621698,
-				"Beau gosse", "Viens me rencontrer, moi, Julien le beau gosse");
-
-		testSearchItem.addMarkerToMap (map);
-		// .icon (BitmapDescriptorFactory.defaultMarker
-		// (BitmapDescriptorFactory.HUE_AZURE))
-	}
-
 	//________ LISTENER MAP
 
 	private OnCameraChangeListener onCameraChangeListener =
@@ -195,7 +166,7 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 	@Override
 	public void onLocationChanged (final Location location)
 	{
-		moveCamera (location, ZOOM_GPS);
+			MapCamera.moveCamera (map, location, ZOOM_GPS);
 	}
 
 	@Override
