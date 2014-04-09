@@ -131,4 +131,32 @@ public class SearchItem
 		if (marker != null)
 			marker.setPosition (newLocation);
 	}
+
+	/**
+	 * Check if the item has moved
+	 * @param newLocation the new location
+	 * @return true if the positions are exactly the same
+	 */
+	public boolean hasMoved (LatLng newLocation)
+	{
+		return ! this.location.equals (newLocation);
+	}
+
+	/**
+	 * Two search items should have the same ID/Hash
+	 * @param item2 the other SearchItem
+	 * @return true if the ID is the same
+	 */
+	public boolean equals (SearchItem item2)
+	{
+		return this.getHash ().equals (item2.getHash ());
+	}
+
+	/**
+	 * The hash is just the id (hash)
+	 */
+	public int hashCode ()
+	{
+		return this.getHash ().hashCode ();
+	}
 }
