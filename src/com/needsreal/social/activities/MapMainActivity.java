@@ -75,7 +75,7 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 			public void onClick (View v)
 			{
 				Intent intent = new Intent (MapMainActivity.this,
-						ConnectionActivity.class); // TODO : connection event lead to gmap view
+						ProfileActivity.class); 
 				startActivity (intent);
 			}
 		});

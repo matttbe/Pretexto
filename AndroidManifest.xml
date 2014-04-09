@@ -58,6 +58,10 @@
             android:name="com.needsreal.social.activities.MapMainActivity"
             android:label="@string/title_activity_map_main" >
         </activity>
+        <activity
+            android:name="com.needsreal.social.activities.ProfileActivity"
+            android:label="@string/title_activity_profile" >
+        </activity>
     </application>
 
 </manifest>
