@@ -26,11 +26,11 @@ public class MapCamera
 	}
 
 	/**
-	 * Get the distance covered by current view
+	 * Get the radius covered by current view
 	 * @param map, the current map
 	 * @return a distance in meters
 	 */
-	public static float distanceCovered (GoogleMap map)
+	public static Object[] radiusDistanceCovered (GoogleMap map)
 	{
 		/* TODO: note: compared only to one side is maybe not the best solution
 		 * e.g: if the device is on the horizontal orientation
@@ -47,6 +47,6 @@ public class MapCamera
 		center.setLatitude (centerCoord.latitude);
 		center.setLongitude (centerCoord.longitude);
 
-		return center.distanceTo (left) * 2;
+		return new Object[] {center.distanceTo (left), center};
 	}
 }

@@ -59,6 +59,7 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 		map.setOnCameraChangeListener (onCameraChangeListener);
 		map.getUiSettings ().setZoomControlsEnabled (false);
 		map.getUiSettings ().setMyLocationButtonEnabled (true);
+		// TODO: move it, move it: https://stackoverflow.com/questions/14489880/
 
 		markers = new MapMarkers (map);
 
@@ -161,7 +162,7 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 		{
 			Log.d ("GPS", "onCameraChange: " + position.target + " ; zoom: "
 					+ position.zoom + " ; dist: "
-					+ MapCamera.distanceCovered (map) + " meters");
+					+ MapCamera.radiusDistanceCovered (map)[0] + " meters");
 			// TODO Auto-generated method stub
 		}
 	};
