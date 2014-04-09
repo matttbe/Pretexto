@@ -21,6 +21,6 @@ public class MapCamera
 		final LatLng latLng = new LatLng (location.getLatitude (),
 				location.getLongitude ());
 		Log.d ("GPS", "move camera to " + latLng.latitude + " " + latLng.longitude);
-		map.moveCamera (CameraUpdateFactory.newLatLngZoom (latLng, zoom));
+		map.animateCamera (CameraUpdateFactory.newLatLngZoom (latLng, zoom));
 	}
 }
