@@ -159,8 +159,10 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 		@Override
 		public void onCameraChange (CameraPosition position)
 		{
+			Log.d ("GPS", "onCameraChange: " + position.target + " ; zoom: "
+					+ position.zoom + " ; dist: "
+					+ MapCamera.distanceCovered (map) + " meters");
 			// TODO Auto-generated method stub
-			
 		}
 	};
 

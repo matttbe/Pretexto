@@ -6,6 +6,7 @@ import android.util.Log;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.VisibleRegion;
 
 public class MapCamera
 {
@@ -22,5 +23,30 @@ public class MapCamera
 				location.getLongitude ());
 		Log.d ("GPS", "move camera to " + latLng.latitude + " " + latLng.longitude);
 		map.animateCamera (CameraUpdateFactory.newLatLngZoom (latLng, zoom));
+	}
+
+	/**
+	 * Get the distance covered by current view
+	 * @param map, the current map
+	 * @return a distance in meters
+	 */
+	public static float distanceCovered (GoogleMap map)
+	{
+		/* TODO: note: compared only to one side is maybe not the best solution
+		 * e.g: if the device is on the horizontal orientation
+		 */
+		VisibleRegion region = map.getProjection ().getVisibleRegion ();
+		double leftLongitude = region.latLngBounds.northeast.longitude;
+		LatLng centerCoord = region.latLngBounds.getCenter ();
+
+		Location left = new Location ("left");
+		left.setLatitude (centerCoord.latitude);
+		left.setLongitude (leftLongitude);
+
+		Location center = new Location ("center");
+		center.setLatitude (centerCoord.latitude);
+		center.setLongitude (centerCoord.longitude);
+
+		return center.distanceTo (left) * 2;
 	}
 }
