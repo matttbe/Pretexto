@@ -114,7 +114,7 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 		if (lastKnowLocation != null)
 		{
 			MapCamera.moveCamera (map, lastKnowLocation, ZOOM_INIT);
-			markers.updateMarkers (lastKnowLocation, true);
+			markers.updateMarkers (true);
 		}
 	}
 
@@ -163,7 +163,7 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 			Log.d ("GPS", "onCameraChange: " + position.target + " ; zoom: "
 					+ position.zoom + " ; dist: "
 					+ MapCamera.radiusDistanceCovered (map)[0] + " meters");
-			// TODO Auto-generated method stub
+			markers.updateMarkers (false);
 		}
 	};
 
@@ -177,7 +177,7 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 		{
 			MapCamera.moveCamera (map, location, ZOOM_GPS);
 			isFirstPosition = false;
-			markers.updateMarkers (location, true);
+			markers.updateMarkers (true);
 		}
 	}
 
