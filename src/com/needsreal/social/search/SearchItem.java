@@ -7,28 +7,29 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class SearchItem
 {
-	private int id;
-	// private String hash; // maybe better for a security view point
+	// private int id;
+	private String hash; // maybe better for a security view point
 	private LatLng location;
 	private String name;
 	private String shortDescription;
 	private String description;
+
 	private Marker marker = null;
 
-	public SearchItem (int id, double latitude, double longitude, String name, String shortDescription)
+	public SearchItem (String hash, double latitude, double longitude, String name, String shortDescription)
 	{
-		this.id = id;
+		this.hash = hash;
 		this.location = new LatLng (latitude, longitude);
 		this.name = name;
 		this.shortDescription = shortDescription;
 	}
 
 	/**
-	 * @return the id
+	 * @return the hash (id)
 	 */
-	public int getId ()
+	public String getHash ()
 	{
-		return id;
+		return hash;
 	}
 
 	/**
