@@ -30,9 +30,13 @@ public class ServerRequests
 		ArrayList<SearchItem> markers = new ArrayList<SearchItem> ();
 		for (int i = 0; i < 15; i++)
 		{
-			String hash = Integer.toString (random.nextInt (35));
-			double lat = latitude + random.nextFloat () / 10;
-			double lon = longitude + random.nextFloat () / 10;
+			double oneMeter = 0.00000898 * 1.05; // with extras
+			String hash = Integer.toString (random.nextInt (200));
+			double lat = latitude + (random.nextBoolean () ? 1.0 : -1.0)
+					* random.nextFloat () * oneMeter * radius;
+			double lon = longitude + (random.nextBoolean () ? 1.0 : -1.0)
+					* random.nextFloat () * oneMeter * radius
+					/ Math.cos (lat);
 			String name = "Ju" + i;
 			String shortDesc = "Le bogoss " + i;
 			SearchItem item = new SearchItem (hash, lat, lon, name, shortDesc);
