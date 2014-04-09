@@ -1,5 +1,10 @@
 package com.needsreal.social.search;
 
+import android.os.Handler;
+import android.os.SystemClock;
+import android.view.animation.Interpolator;
+import android.view.animation.LinearInterpolator;
+
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -125,11 +130,35 @@ public class SearchItem
 	/**
 	 * Set the new location and update the marker (if available)
 	 */
-	public void updateLocation (LatLng newLocation)
+	public void updateLocation (final LatLng newLocation)
 	{
+		final double oldLatitude = getLatitude();
+		final double oldLongitude = getLongitude();
+
 		this.location = newLocation;
-		if (marker != null)
-			marker.setPosition (newLocation);
+		if (marker == null)
+			return;
+
+		final long duration = 500;
+		final long start = SystemClock.uptimeMillis ();
+		final Interpolator interpolator = new LinearInterpolator ();
+		final Handler handler = new Handler ();
+		handler.post (new Runnable ()
+		{
+			@Override
+			public void run ()
+			{
+				// http://ddewaele.github.io/GoogleMapsV2WithActionBarSherlock/part3
+				long elapsed = SystemClock.uptimeMillis () - start;
+				float t = interpolator.getInterpolation ((float) elapsed
+						/ duration);
+				double lat = t * newLocation.latitude + (1 - t) * oldLatitude;
+				double lng = t * newLocation.longitude + (1 - t) * oldLongitude;
+				marker.setPosition (new LatLng (lat, lng));
+				if (t < 1.0)
+					handler.postDelayed (this, 16);
+			}
+		});
 	}
 
 	/**
