@@ -88,6 +88,8 @@ public class SearchItem
 		this.description = description;
 	}
 
+	//_______________ Marker
+
 	/**
 	 * @return a MarkerOptions needed for creating a marker
 	 */
@@ -106,10 +108,27 @@ public class SearchItem
 	 * @param map where the marker will be added
 	 * @return the marker added to the map
 	 */
-	public Marker addMarkerToMap (GoogleMap map)
+	public void addMarkerToMap (GoogleMap map)
 	{
 		if (marker == null)
 			marker = map.addMarker (getMarkerOptions());
+	}
+
+	/**
+	 * @return the marker linked to this item
+	 */
+	public Marker getMarker ()
+	{
 		return marker;
+	}
+
+	/**
+	 * Set the new location and update the marker (if available)
+	 */
+	public void updateLocation (LatLng newLocation)
+	{
+		this.location = newLocation;
+		if (marker != null)
+			marker.setPosition (newLocation);
 	}
 }
