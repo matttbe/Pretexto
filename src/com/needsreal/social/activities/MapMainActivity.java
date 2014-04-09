@@ -35,8 +35,8 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 	private static final int GPS_MIN_TIME_UPDATE = 2 * 60 * 1000; // 2min
 	private static final int NETWORK_MIN_TIME_UPDATE = 5 * 60 * 1000; // 5min
 	private static final int MIN_DISTANCE_UPDATE = 10; // 10 meters
-	private static final float ZOOM_INIT = 13;
-	private static final float ZOOM_GPS = 14;
+	private static final float ZOOM_INIT = 11;
+	private static final float ZOOM_GPS = 12;
 
 	@Override
 	protected void onCreate (Bundle savedInstanceState)
