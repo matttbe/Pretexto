@@ -31,6 +31,7 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 
 	private boolean isUsingGPS = false;
 	private boolean isUsingNetwork = false;
+	private boolean isFirstPosition = true;
 
 	private static final int GPS_MIN_TIME_UPDATE = 2 * 60 * 1000; // 2min
 	private static final int NETWORK_MIN_TIME_UPDATE = 5 * 60 * 1000; // 5min
@@ -145,6 +146,7 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 	{
 		Log.d ("GPS", "unregistered");
 		isUsingGPS = isUsingNetwork = false;
+		isFirstPosition = true; // TODO: ok? next update will reposition the camera
 		locationManager.removeUpdates (this);
 	}
 
@@ -168,7 +170,12 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 	@Override
 	public void onLocationChanged (final Location location)
 	{
+		if (isFirstPosition)
+		{
 			MapCamera.moveCamera (map, location, ZOOM_GPS);
+			isFirstPosition = false;
+			markers.updateMarkers (location, true);
+		}
 	}
 
 	@Override
