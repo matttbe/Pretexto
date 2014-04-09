@@ -1,5 +1,6 @@
 package com.needsreal.social.activities;
 
+import com.needsreal.social.Needsreal;
 import com.needsreal.social.R;
 
 import android.app.Activity;
@@ -18,6 +19,8 @@ public class MainActivity extends Activity
 	protected void onCreate (Bundle savedInstanceState)
 	{
 		super.onCreate (savedInstanceState);
+
+		Needsreal.init (getApplicationContext());
 
 		// Windows properties
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
