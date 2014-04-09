@@ -57,6 +57,8 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 		map.setMyLocationEnabled (true);
 		map.setOnCameraChangeListener (onCameraChangeListener);
 		map.getUiSettings ().setZoomControlsEnabled (false);
+		map.getUiSettings ().setMyLocationButtonEnabled (true);
+
 		markers = new MapMarkers (map);
 
 		FragmentManager fm = getFragmentManager ();
