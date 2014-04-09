@@ -1,9 +1,6 @@
 package com.needsreal.social.activities;
 
 import com.needsreal.social.R;
-import com.needsreal.social.R.id;
-import com.needsreal.social.R.layout;
-import com.needsreal.social.R.menu;
 
 import android.app.Activity;
 import android.content.Intent;
