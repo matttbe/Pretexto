@@ -4,9 +4,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import android.location.Location;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.util.Log;
+import android.view.animation.Interpolator;
+import android.view.animation.LinearInterpolator;
 
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.needsreal.social.search.SearchItem;
 import com.needsreal.social.server.Server;
 
@@ -74,5 +80,37 @@ public class MapMarkers
 
 		// .icon (BitmapDescriptorFactory.defaultMarker
 		// (BitmapDescriptorFactory.HUE_AZURE))
+	}
+
+	public static void moveWithAnimations (final Marker marker, final LatLng newLocation)
+	{
+
+	final LatLng oldPosition = marker.getPosition ();
+	final double oldLatitude = oldPosition.latitude;
+	final double oldLongitude = oldPosition.longitude;
+
+	final long duration = 500;
+	final long start = SystemClock.uptimeMillis ();
+	final Interpolator interpolator = new LinearInterpolator ();
+	final Handler handler = new Handler ();
+	handler.post (new Runnable ()
+	{
+		@Override
+		public void run ()
+		{
+			// http://ddewaele.github.io/GoogleMapsV2WithActionBarSherlock/part3
+			long elapsed = SystemClock.uptimeMillis () - start;
+			float t = interpolator.getInterpolation ((float) elapsed
+					/ duration);
+			double lat = t * newLocation.latitude + (1 - t) * oldLatitude;
+			double lng = t * newLocation.longitude + (1 - t) * oldLongitude;
+			marker.setPosition (new LatLng (lat, lng));
+			if (t < 1.0)
+			{
+				marker.setPosition (newLocation);
+				handler.postDelayed (this, 16);
+			}
+		}
+	});
 	}
 }
