@@ -12,6 +12,8 @@ public enum UserFields
 	CITY,
 	POSTCODE,
 	COUNTRY,
+	POSITION,
+	PRECISION,
 	MOOD,
 	INTERESTS,
 	NEEDS,
