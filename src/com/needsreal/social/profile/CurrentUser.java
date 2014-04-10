@@ -39,4 +39,10 @@ public class CurrentUser extends AbstractUser
 		this.lastPosition = position;
 	}
 
+	@Override
+	public LatLng getPosition ()
+	{
+		return lastPosition;
+	}
+
 }
