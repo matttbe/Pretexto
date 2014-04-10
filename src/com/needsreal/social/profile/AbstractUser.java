@@ -2,6 +2,7 @@ package com.needsreal.social.profile;
 
 import java.util.ArrayList;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.needsreal.social.search.Interest;
 import com.needsreal.social.socialnetwork.SocialNetworkInterface;
 
@@ -152,6 +153,11 @@ public abstract class AbstractUser
 	{
 		return country;
 	}
+
+	/**
+	 * @return the last known position
+	 */
+	public abstract LatLng getPosition ();
 
 	/**
 	 * @param country the country to set

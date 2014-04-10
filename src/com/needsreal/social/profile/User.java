@@ -1,5 +1,6 @@
 package com.needsreal.social.profile;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.needsreal.social.search.SearchItem;
 
@@ -7,12 +8,14 @@ import com.needsreal.social.search.SearchItem;
 public class User extends AbstractUser
 {
 	private Marker marker;
+	private int precision; // of the location
 
+	/*
 	public User (String hash, String nickname)
 	{
 		super (hash, nickname);
 		// TODO Auto-generated constructor stub
-	}
+	}*/
 
 	public User (SearchItem searchItem)
 	{
@@ -35,5 +38,13 @@ public class User extends AbstractUser
 	public void setMarker (Marker marker)
 	{
 		this.marker = marker;
+	}
+
+	@Override
+	public LatLng getPosition ()
+	{
+		if (marker == null)
+			return null;
+		return marker.getPosition ();
 	}
 }
