@@ -17,7 +17,6 @@ public class SearchItem
 	private LatLng location;
 	private String name;
 	private String shortDescription;
-	private String description;
 
 	private Marker marker = null;
 
@@ -75,22 +74,6 @@ public class SearchItem
 	public String getShortDescription ()
 	{
 		return shortDescription;
-	}
-
-	/**
-	 * @return the description
-	 */
-	public String getDescription ()
-	{
-		return description;
-	}
-
-	/**
-	 * @param description the description to set
-	 */
-	public void setDescription (String description)
-	{
-		this.description = description;
 	}
 
 	//_______________ Marker
