@@ -16,16 +16,16 @@ public abstract class AbstractUser
 
 	protected String shortDescription;
 	protected String description;
-	protected String activityPro; // String?
+	protected String activityPro;
 
 	protected String city;
 	protected int postcode;
 	protected int country; // check Locale
 
+	protected Mood mood; // a picture
 	protected ArrayList<Interest> interests;
 	protected ArrayList<Interest> needs;
 	protected ArrayList<SocialNetworkInterface> contacts;
-	protected String mood; // or Interest?
 
 	public AbstractUser (String hash, String nickname)
 	{
@@ -212,7 +212,7 @@ public abstract class AbstractUser
 	/**
 	 * @return the mood
 	 */
-	public String getMood ()
+	public Mood getMood ()
 	{
 		return mood;
 	}
@@ -220,7 +220,7 @@ public abstract class AbstractUser
 	/**
 	 * @param mood the mood to set
 	 */
-	public void setMood (String mood)
+	public void setMood (Mood mood)
 	{
 		this.mood = mood;
 	}
