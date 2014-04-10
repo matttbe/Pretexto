@@ -20,7 +20,7 @@ public abstract class AbstractUser
 
 	protected String city;
 	protected int postcode;
-	protected String country; // check Locale
+	protected int country; // check Locale
 
 	protected ArrayList<Interest> interests;
 	protected ArrayList<Interest> needs;
@@ -146,9 +146,9 @@ public abstract class AbstractUser
 	}
 
 	/**
-	 * @return the country
+	 * @return the country id
 	 */
-	public String getCountry ()
+	public int getCountryId ()
 	{
 		return country;
 	}
@@ -156,7 +156,7 @@ public abstract class AbstractUser
 	/**
 	 * @param country the country to set
 	 */
-	public void setCountry (String country)
+	public void setCountryId (int country)
 	{
 		this.country = country;
 	}
