@@ -23,14 +23,19 @@ public class SearchBlockFragment extends Fragment
 
 		ListView LV = (ListView) V.findViewById (
 				R.id.previousSearchList);
+		ListView LV2= (ListView) V.findViewById (
+				R.id.nearestList);
 		// TODO Link to DB
 		String List[] = new String[9];
 		List[0] = "Ju bogoss";
 		for (int i = 1; i < List.length; i++)
 			List[i] = "Matth - with a long line because we need a long sentence";
 		ArrayAdapter<String> aa = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, List);
+		
+		
 
 		LV.setAdapter (aa);
+		LV2.setAdapter (aa);
 		return V;
 
 	}

@@ -32,8 +32,7 @@ public class SearchFragment extends Fragment
 				{
 					FragmentManager fm = getFragmentManager ();
 					fm.beginTransaction ()
-							.setCustomAnimations (android.R.animator.fade_in,
-									android.R.animator.fade_out)
+							.setTransitionStyle (R.animator.slide_in_up)
 							.show (getFragmentManager ().findFragmentById (
 									R.id.searchblock)).commit ();
 				}
@@ -41,8 +40,7 @@ public class SearchFragment extends Fragment
 				{
 					FragmentManager fm = getFragmentManager ();
 					fm.beginTransaction ()
-							.setCustomAnimations (android.R.animator.fade_in,
-									android.R.animator.fade_out)
+							.setTransitionStyle (R.animator.slide_in_down)
 							.hide (getFragmentManager ().findFragmentById (
 									R.id.searchblock)).commit ();
 				}

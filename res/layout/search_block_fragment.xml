@@ -5,13 +5,16 @@
     android:layout_height="match_parent"
     android:layout_margin="2dp"
     android:layout_weight="3"
+    android:animateLayoutChanges="true"
     tools:context="SearchBlockFragment" >
-	
+
     <ScrollView
         android:id="@+id/linearL1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/darker_gray" >
+        android:background="@android:color/background_light" >
+
+        
 
         <LinearLayout
             android:id="@+id/linearL2"
@@ -20,6 +23,13 @@
             android:layout_margin="5dp"
             android:background="@android:color/white"
             android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/previous_search"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <ListView
                 android:id="@+id/previousSearchList"
@@ -33,27 +43,40 @@
                 android:layout_gravity="center"
                 android:orientation="horizontal" >
 
-                <ImageButton
-                    android:id="@+id/categorySearch1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/ic_launcher" />
-
-                <ImageButton
+                <Button
                     android:id="@+id/categorySearch2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:background="@drawable/ic_launcher" />
+                    android:text="@string/need" />
 
-                <ImageButton
+                <Button
                     android:id="@+id/categorySearch3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:background="@drawable/ic_launcher" />
+                    android:text="@string/demand" />
+
+                <Button
+                    android:id="@+id/categorySearch1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@string/offer" />
             </LinearLayout>
+            
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nearest_people"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+            
+            <ListView
+                android:id="@+id/nearestList"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+            
         </LinearLayout>
     </ScrollView>
 
