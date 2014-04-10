@@ -2,6 +2,8 @@ package com.needsreal.social.profile;
 
 import java.util.ArrayList;
 
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.needsreal.social.search.Interest;
 import com.needsreal.social.socialnetwork.SocialNetworkInterface;
 
@@ -10,12 +12,21 @@ public class User
 {
 	private String hash;
 	private String nickname;
+
 	private String firstname; // John
 	private String lastname; // Doe
+
+	private String shortDescription;
+	private String description;
+	private String activityPro; // String?
+
 	private String city;
 	private int postcode;
 	private String country; // check Locale
-	private String activityPro; // String?
+	private LatLng position;
+
+	private Marker marker;
+
 	private ArrayList<Interest> interests;
 	private ArrayList<Interest> needs;
 	private ArrayList<SocialNetworkInterface> contacts;
@@ -24,22 +35,6 @@ public class User
 	public User (String hash, String nickname)
 	{
 		this.hash = hash;
-		this.nickname = nickname;
-	}
-
-	/**
-	 * @return the nickname
-	 */
-	public String getNickname ()
-	{
-		return nickname;
-	}
-
-	/**
-	 * @param nickname the nickname to set
-	 */
-	public void setNickname (String nickname)
-	{
 		this.nickname = nickname;
 	}
 
@@ -73,6 +68,54 @@ public class User
 	public void setLastname (String lastname)
 	{
 		this.lastname = lastname;
+	}
+
+	/**
+	 * @return the shortDescription
+	 */
+	public String getShortDescription ()
+	{
+		return shortDescription;
+	}
+
+	/**
+	 * @param shortDescription the shortDescription to set
+	 */
+	public void setShortDescription (String shortDescription)
+	{
+		this.shortDescription = shortDescription;
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription ()
+	{
+		return description;
+	}
+
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription (String description)
+	{
+		this.description = description;
+	}
+
+	/**
+	 * @return the activityPro
+	 */
+	public String getActivityPro ()
+	{
+		return activityPro;
+	}
+
+	/**
+	 * @param activityPro the activityPro to set
+	 */
+	public void setActivityPro (String activityPro)
+	{
+		this.activityPro = activityPro;
 	}
 
 	/**
@@ -124,19 +167,35 @@ public class User
 	}
 
 	/**
-	 * @return the activityPro
+	 * @return the position
 	 */
-	public String getActivityPro ()
+	public LatLng getPosition ()
 	{
-		return activityPro;
+		return position;
 	}
 
 	/**
-	 * @param activityPro the activityPro to set
+	 * @param position the position to set
 	 */
-	public void setActivityPro (String activityPro)
+	public void setPosition (LatLng position)
 	{
-		this.activityPro = activityPro;
+		this.position = position;
+	}
+
+	/**
+	 * @return the marker
+	 */
+	public Marker getMarker ()
+	{
+		return marker;
+	}
+
+	/**
+	 * @param marker the marker to set
+	 */
+	public void setMarker (Marker marker)
+	{
+		this.marker = marker;
 	}
 
 	/**
@@ -209,5 +268,13 @@ public class User
 	public String getHash ()
 	{
 		return hash;
+	}
+
+	/**
+	 * @return the nickname
+	 */
+	public String getNickname ()
+	{
+		return nickname;
 	}
 }
