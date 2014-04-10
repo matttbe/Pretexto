@@ -1,0 +1,33 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:layout_margin="2dp"
+    android:layout_weight="1"
+    tools:context="Profile" >
+
+    <LinearLayout
+        android:id="@+id/hobbypanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@android:color/white" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nohobby"
+        android:visibility="invisible"
+        android:textAppearance="?android:attr/textAppearanceLarge" />    
+        
+        
+        
+    </LinearLayout>
+
+    
+
+</FrameLayout>
+
+    

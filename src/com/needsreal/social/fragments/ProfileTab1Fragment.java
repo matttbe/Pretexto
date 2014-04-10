@@ -23,8 +23,6 @@ public class ProfileTab1Fragment extends Fragment
 	
 	@Override
 	public String toString(){
-		Log.w ("pret", "coucou :) ");
-		Log.w ("pret", ""+getResources ());
 		return getString (R.string.profile_tab1);
 	}
 }

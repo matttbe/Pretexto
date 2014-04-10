@@ -10,9 +10,10 @@ import android.support.v4.view.ViewPager;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.astuetz.PagerSlidingTabStrip;
 import com.needsreal.social.R;
 import com.needsreal.social.fragments.ProfileTab1Fragment;
-import com.needsreal.social.fragments.ProfileTab2Fragment;
+import com.needsreal.social.fragments.VisibilityFragment;
 import com.needsreal.social.fragments.ProfileTab3Fragment;
 import com.needsreal.social.ui_utils.ProfilePagerAdapter;
 
@@ -36,7 +37,7 @@ public class ProfileActivity extends FragmentActivity
 
 		// Ajout des Fragments dans la liste
 		fragments.add(Fragment.instantiate(this,ProfileTab1Fragment.class.getName()));
-		fragments.add(Fragment.instantiate(this,ProfileTab2Fragment.class.getName()));
+		fragments.add(Fragment.instantiate(this,VisibilityFragment.class.getName()));
 		fragments.add(Fragment.instantiate(this,ProfileTab3Fragment.class.getName()));
 
 		// Création de l'adapter qui s'occupera de l'affichage de la liste de
@@ -46,6 +47,8 @@ public class ProfileActivity extends FragmentActivity
 		ViewPager pager = (ViewPager) super.findViewById(R.id.pager);
 		// Affectation de l'adapter au ViewPager
 		pager.setAdapter(this.mPagerAdapter);
+		PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs_strip);
+		 tabs.setViewPager(pager);
 	}
 
 }
