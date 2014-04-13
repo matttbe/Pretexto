@@ -8,14 +8,9 @@ import com.needsreal.social.search.SearchItem;
 public class User extends AbstractUser
 {
 	private Marker marker;
-	private int precision; // of the location
 
-	/*
-	public User (String hash, String nickname)
-	{
-		super (hash, nickname);
-		// TODO Auto-generated constructor stub
-	}*/
+	private int precision; // of the location
+	protected Mood mood; // a picture
 
 	public User (SearchItem searchItem)
 	{
@@ -46,5 +41,37 @@ public class User extends AbstractUser
 		if (marker == null)
 			return null;
 		return marker.getPosition ();
+	}
+
+	/**
+	 * @return the precision
+	 */
+	public int getPrecision ()
+	{
+		return precision;
+	}
+
+	/**
+	 * @param precision the precision to set
+	 */
+	public void setPrecision (int precision)
+	{
+		this.precision = precision;
+	}
+
+	/**
+	 * @return the mood
+	 */
+	public Mood getMood ()
+	{
+		return mood;
+	}
+
+	/**
+	 * @param mood the mood to set
+	 */
+	public void setMood (Mood mood)
+	{
+		this.mood = mood;
 	}
 }

@@ -23,7 +23,6 @@ public abstract class AbstractUser
 	protected int postcode;
 	protected int country; // check Locale
 
-	protected Mood mood; // a picture
 	protected ArrayList<Interest> interests;
 	protected ArrayList<Interest> needs;
 	protected ArrayList<SocialNetworkInterface> contacts;
@@ -213,22 +212,6 @@ public abstract class AbstractUser
 	public void setContacts (ArrayList<SocialNetworkInterface> contacts)
 	{
 		this.contacts = contacts;
-	}
-
-	/**
-	 * @return the mood
-	 */
-	public Mood getMood ()
-	{
-		return mood;
-	}
-
-	/**
-	 * @param mood the mood to set
-	 */
-	public void setMood (Mood mood)
-	{
-		this.mood = mood;
 	}
 
 	/**
