@@ -21,7 +21,7 @@ public class User extends AbstractUser
 	{
 		super (searchItem.getHash (), searchItem.getName ());
 		this.marker = searchItem.getMarker ();
-		this.shortDescription = searchItem.getShortDescription ();
+		this.shortDesc = searchItem.getShortDescription ();
 	}
 
 	/**
