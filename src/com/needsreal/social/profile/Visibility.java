@@ -79,11 +79,19 @@ public class Visibility
 	}
 
 	/**
-	 * @return the current Mood
+	 * @return the drawable of the current Mood
 	 */
 	public int getMoodDrawable ()
 	{
 		return mood.getDrawable ();
+	}
+
+	/**
+	 * @return the current Mood
+	 */
+	public Mood getMood ()
+	{
+		return mood;
 	}
 
 	/**
@@ -154,7 +162,17 @@ public class Visibility
 		{
 			// special case: a specific value (e.g. precision, Mood)
 			if (field.hasSpecificValue ())
-				return (Integer) 0; // TODO: need DB: getInteger (field.getName() + "value")
+			{
+				switch (field)
+				{
+					case PRECISION:
+						return getPrecision ();
+					case MOOD:
+						return getMoodDrawable ();
+					default:
+						return null;
+				}
+			}
 			return field.invoke (userField);
 		}
 	}
