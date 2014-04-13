@@ -67,12 +67,12 @@ public enum UserFields
 	 * @param toSet the value to set in case of a setter method
 	 * @return
 	 */
-	public Object invoke (AbstractUser user, boolean get, Object toSet)
+	public Object invoke (AbstractUser user)
 	{
 		Method method;
 		try
 		{
-			method = user.getClass ().getMethod ((get ? "get" : "set") + name);
+			method = user.getClass ().getMethod ("get" + name);
 		} catch (NoSuchMethodException e)
 		{
 			Log.e ("User", e.getMessage ());
@@ -80,9 +80,7 @@ public enum UserFields
 		}
 		try
 		{
-			if (get)
-				return method.invoke (user);
-			return method.invoke (user, toSet);
+			return method.invoke (user);
 		} catch (IllegalAccessException e)
 		{
 			Log.e ("User", e.getMessage ());

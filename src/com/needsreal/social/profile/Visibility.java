@@ -111,7 +111,7 @@ public class Visibility
 			// special case: a specific value (e.g. precision, Mood)
 			if (field.hasSpecificValue ())
 				return (Integer) 0; // TODO: need DB: getInteger (field.getName() + "value")
-			return field.invoke (userField, true, null);
+			return field.invoke (userField);
 		}
 
 		public void setValue (AbstractUser userField, Object toSet)
@@ -119,7 +119,6 @@ public class Visibility
 			// special case: a specific value (e.g. precision, Mood)
 			if (field.hasSpecificValue ())
 				return; // TODO: need DB: setInteger (field.getName() + "value", toSet)
-			field.invoke (userField, false, toSet);
 		}
 	}
 }
