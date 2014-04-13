@@ -17,7 +17,9 @@ package com.needsreal.social.profile;
  */
 public class Visibility
 {
-	private String name;
+	private String name; // can't contains specials chars
+
+	private String title; // readable title
 	private int precision = 0;
 	private Mood mood = Mood.HAPPY;
 
@@ -45,14 +47,6 @@ public class Visibility
 	}
 
 	/**
-	 * @param name the name to set
-	 */
-	public void setName (String name)
-	{
-		this.name = name;
-	}
-
-	/**
 	 * @return the settings
 	 */
 	public VisibilityObject[] getSettings ()
@@ -61,6 +55,22 @@ public class Visibility
 	}
 
 	//___________________________ SPECIFIC SETTINGS
+
+	/**
+	 * @return the title
+	 */
+	public String getTitle ()
+	{
+		return title;
+	}
+
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle (String title)
+	{
+		this.title = title;
+	}
 
 	/**
 	 * @return the precision value
