@@ -63,9 +63,9 @@ public class Visibility
 	{
 		// TODO
 		/*
-		 * for (VisibilityObject item : settings) { setBoolean
-		 * (item.field.getMethodName (), item.value); }
-		 */
+		for (VisibilityObject item : settings)
+			setBoolean (item.field.getMethodName (), item.value);
+		*/
 	}
 
 	/**
@@ -75,9 +75,9 @@ public class Visibility
 	{
 		// TODO
 		/*
-		 * for (VisibilityObject item : settings) { item.value = getBoolean
-		 * (item.field.getMethodName (), item.value); }
-		 */
+		for (VisibilityObject item : settings)
+			item.value = getBoolean (item.field.getMethodName ());
+		*/
 	}
 
 	/**
