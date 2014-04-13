@@ -18,6 +18,8 @@ package com.needsreal.social.profile;
 public class Visibility
 {
 	private String name;
+	private int precision = 0;
+	private Mood mood = Mood.HAPPY;
 
 	private VisibilityObject[] settings;
 
@@ -31,6 +33,8 @@ public class Visibility
 		for (int i = 0; i < fields.length; i++)
 			settings[i] = new VisibilityObject (fields[i]);
 	}
+
+	//____________________ GETTERS / SETTERS
 
 	/**
 	 * @return the name
@@ -56,6 +60,42 @@ public class Visibility
 		return settings;
 	}
 
+	//___________________________ SPECIFIC SETTINGS
+
+	/**
+	 * @return the precision value
+	 */
+	public int getPrecision ()
+	{
+		return precision;
+	}
+
+	/**
+	 * @param precision the new precision value
+	 */
+	public void setPrecision (int precision)
+	{
+		this.precision = precision;
+	}
+
+	/**
+	 * @return the current Mood
+	 */
+	public int getMoodDrawable ()
+	{
+		return mood.getDrawable ();
+	}
+
+	/**
+	 * @param mood Mood to set
+	 */
+	public void setMood (Mood mood)
+	{
+		this.mood = mood;
+	}
+
+	//___________________________ DB
+
 	/**
 	 * Save to the DataBase
 	 */
@@ -80,6 +120,8 @@ public class Visibility
 		*/
 	}
 
+	//___________________________ Server
+
 	/**
 	 * send to the Server
 	 */
@@ -96,10 +138,12 @@ public class Visibility
 		// TODO
 	}
 
+	//___________________________ CLASS
+
 	public class VisibilityObject
 	{
 		public UserFields field;
-		public boolean visible;
+		public boolean visible = true;
 
 		public VisibilityObject (UserFields field)
 		{
@@ -112,13 +156,6 @@ public class Visibility
 			if (field.hasSpecificValue ())
 				return (Integer) 0; // TODO: need DB: getInteger (field.getName() + "value")
 			return field.invoke (userField);
-		}
-
-		public void setValue (AbstractUser userField, Object toSet)
-		{
-			// special case: a specific value (e.g. precision, Mood)
-			if (field.hasSpecificValue ())
-				return; // TODO: need DB: setInteger (field.getName() + "value", toSet)
 		}
 	}
 }
