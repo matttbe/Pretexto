@@ -6,14 +6,14 @@ package com.needsreal.social.profile;
  *
  * What do we need?
  *  * Associate a setting (key-value) with a boolean.
- *  * List all settings with the value (e.g.:John) and the boolean (ON-OFF)
- *  * Save/Load settings
- *  * Send/Receive settings
+ *  * List all settings with the value (e.g.: John) and the boolean (ON-OFF)
+ *  * Save/Load settings TODO: need DB
+ *  * Send/Receive settings TODO: need Server
  *
  * Special cases:
- *  * Some settings can be specific, e.g. the precision
- *  * Some settings contain a list, e.g. the contact list. We could enable only
- *    some of them
+ *  * Some settings can be specific, e.g. the precision, the mood (an Integer)
+ *  * Some settings contain a list, e.g. the contact list.
+ *    => We could enable only some of them TODO
  */
 public class Visibility
 {
@@ -64,7 +64,7 @@ public class Visibility
 		// TODO
 		/*
 		for (VisibilityObject item : settings)
-			setBoolean (item.field.getMethodName (), item.value);
+			setBoolean (item.field.getName (), item.value);
 		*/
 	}
 
@@ -76,7 +76,7 @@ public class Visibility
 		// TODO
 		/*
 		for (VisibilityObject item : settings)
-			item.value = getBoolean (item.field.getMethodName ());
+			item.value = getBoolean (item.field.getName ());
 		*/
 	}
 
@@ -99,11 +99,27 @@ public class Visibility
 	public class VisibilityObject
 	{
 		public UserFields field;
-		public boolean value;
+		public boolean visible;
 
 		public VisibilityObject (UserFields field)
 		{
 			this.field = field;
+		}
+
+		public Object getValue (AbstractUser userField)
+		{
+			// special case: a specific value (e.g. precision, Mood)
+			if (field.hasSpecificValue ())
+				return (Integer) 0; // TODO: need DB: getInteger (field.getName() + "value")
+			return field.invoke (userField, true, null);
+		}
+
+		public void setValue (AbstractUser userField, Object toSet)
+		{
+			// special case: a specific value (e.g. precision, Mood)
+			if (field.hasSpecificValue ())
+				return; // TODO: need DB: setInteger (field.getName() + "value", toSet)
+			field.invoke (userField, false, toSet);
 		}
 	}
 }

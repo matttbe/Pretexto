@@ -7,41 +7,72 @@ import android.util.Log;
 
 public enum UserFields
 {
-	HASH ("getHash"),
-	NICKNAME ("getNickname"),
-	FIRSTNAME ("getFirstName"),
-	LASTNAME ("getLastName"),
-	SHORTDESC ("getShortDescription"),
-	DESC ("getDescription"),
-	ACTIPRO ("getActivityPro"),
-	CITY ("getCity"),
-	POSTCODE ("getPostcode"),
-	COUNTRY ("getCountry"),
-	POSITION ("getPosition"),
-	PRECISION (null),
-	MOOD ("getMood"),
-	INTERESTS ("getInterests"),
-	NEEDS ("getNeeds"),
-	CONTACTS ("getContacts");
+	//         method       has list? specific value?
+	HASH      ("Hash",        false, false),
+	NICKNAME  ("Nickname",    false, false),
+	FIRSTNAME ("FirstName",   false, false),
+	LASTNAME  ("LastName",    false, false),
+	SHORTDESC ("ShortDesc",   false, false),
+	DESC      ("Description", false, false),
+	ACTIPRO   ("ActivityPro", false, false),
+	CITY      ("City",        false, false),
+	POSTCODE  ("Postcode",    false, false),
+	COUNTRY   ("Country",     false, false),
+	POSITION  ("Position",    false, false),
+	PRECISION ("Precision",   false, true),
+	MOOD      ("Mood",        false, true),
+	INTERESTS ("Interests",   true,  false),
+	NEEDS     ("Needs",       true,  false),
+	CONTACTS  ("Contacts",    true,  false);
 
-	private final String methodName;
+	private final String name;
+	private final boolean hasList;
+	private final boolean specificValue;
 
-	UserFields (String method)
+	UserFields (String name, boolean hasList, boolean specificValue)
 	{
-		this.methodName = method;
+		this.name = name;
+		this.hasList = hasList;
+		this.specificValue = specificValue;
 	}
 
-	public String getMethodName ()
+	/**
+	 * @return true if this setting is linked to a list
+	 */
+	public boolean hasList ()
 	{
-		return methodName;
+		return hasList;
 	}
 
-	public Object invoke (AbstractUser user)
+	/**
+	 * @return true if this setting has a specific value
+	 * (for the visibility, not global)
+	 */
+	public boolean hasSpecificValue ()
+	{
+		return specificValue;
+	}
+
+	/**
+	 * @return the method name associated to the setting
+	 */
+	public String getName ()
+	{
+		return name;
+	}
+
+	/**
+	 * @param user current user with which we will interact
+	 * @param get true if it's a getter method
+	 * @param toSet the value to set in case of a setter method
+	 * @return
+	 */
+	public Object invoke (AbstractUser user, boolean get, Object toSet)
 	{
 		Method method;
 		try
 		{
-			method = user.getClass ().getMethod (methodName);
+			method = user.getClass ().getMethod ((get ? "get" : "set") + name);
 		} catch (NoSuchMethodException e)
 		{
 			Log.e ("User", e.getMessage ());
@@ -49,7 +80,9 @@ public enum UserFields
 		}
 		try
 		{
-			return method.invoke (user);
+			if (get)
+				return method.invoke (user);
+			return method.invoke (user, toSet);
 		} catch (IllegalAccessException e)
 		{
 			Log.e ("User", e.getMessage ());
