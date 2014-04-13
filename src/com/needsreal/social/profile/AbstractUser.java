@@ -15,7 +15,7 @@ public abstract class AbstractUser
 	protected String firstname; // John
 	protected String lastname; // Doe
 
-	protected String shortDescription;
+	protected String shortDesc;
 	protected String description;
 	protected String activityPro;
 
@@ -67,19 +67,19 @@ public abstract class AbstractUser
 	}
 
 	/**
-	 * @return the shortDescription
+	 * @return the short description
 	 */
-	public String getShortDescription ()
+	public String getShortDesc ()
 	{
-		return shortDescription;
+		return shortDesc;
 	}
 
 	/**
-	 * @param shortDescription the shortDescription to set
+	 * @param shortDesc the short description to set
 	 */
-	public void setShortDescription (String shortDescription)
+	public void setShortDesc (String shortDesc)
 	{
-		this.shortDescription = shortDescription;
+		this.shortDesc = shortDesc;
 	}
 
 	/**
