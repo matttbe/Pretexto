@@ -16,7 +16,6 @@ public class CurrentUser extends AbstractUser
 	private String token;
 	private boolean hasLogin;
 
-	private UserSettings settings;
 	private LatLng lastPosition;
 
 	private SharedPreferences prefs;
@@ -154,14 +153,6 @@ public class CurrentUser extends AbstractUser
 	}
 
 	//_____________________________ GETTER/SETTERS
-
-	/**
-	 * @return the settings
-	 */
-	public UserSettings getSettings ()
-	{
-		return settings;
-	}
 
 	@Override
 	public LatLng getPosition ()
