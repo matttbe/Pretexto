@@ -6,15 +6,12 @@ import android.content.Context;
 
 public class StaticCategories
 {
-	private static Category[] categories = new Category[] {
-			new Category (0, "Other", "No category"),
-			new Category (1, "Sport", "All things about sport") };
+	private static Category[] categories;
 
-	// TODO: init
 	public StaticCategories (Context context)
 	{
 		int i = 0;
-		categories = new Category[10];
+		categories = new Category[3];
 
 		categories[i] = new Category (i++,
 				context.getString (R.string.cat_other),
