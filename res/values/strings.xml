@@ -13,6 +13,8 @@
     <string name="password">Password</string>
     <string name="password_bis">Confirmation</string>
     <string name="tos">Term Of Service</string>
+    <string name="add_visibility_object">Add Visibility Settings</string>
+    <string name="validate">Validate</string>
     
     <string name="previous_search">Previous search</string>
     <string name="need">Needs</string>
