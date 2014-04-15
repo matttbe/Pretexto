@@ -1,6 +1,10 @@
 package com.needsreal.social.profile;
 
+import com.needsreal.social.Needsreal;
+
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 /**
  * The user can specify the visibility of some details of its profile and save
@@ -9,7 +13,7 @@ import android.content.Context;
  * What do we need?
  *  * Associate a setting (key-value) with a boolean.
  *  * List all settings with the value (e.g.: John) and the boolean (ON-OFF)
- *  * Save/Load settings TODO: need DB
+ *  * Save/Load settings
  *  * Send/Receive settings TODO: need Server
  *
  * Special cases:
@@ -23,13 +27,19 @@ public class Visibility
 
 	private String title; // readable title
 	private int precision = 0;
-	private Mood mood = Mood.HAPPY;
+	private Mood mood = Mood.HAPPY; // save the string in the DB
 
 	private VisibilityObject[] settings;
+	private SharedPreferences prefs;
+
+	private static final String PREFS_KEY_PRECISION = "precisionValue";
+	private static final String PREFS_KEY_MOOD = "moodValue";
 
 	public Visibility (String name, Context context)
 	{
 		this.name = name;
+		prefs = context.getSharedPreferences (Needsreal.PREFS_KEY_VISIBILITIES
+				+ name, Context.MODE_PRIVATE);
 
 		UserFields[] fields = UserFields.values ();
 		settings = new VisibilityObject[fields.length];
@@ -121,11 +131,14 @@ public class Visibility
 	 */
 	public void saveToDB ()
 	{
-		// TODO
-		/*
+		Editor editor = prefs.edit ();
+
 		for (VisibilityObject item : settings)
-			setBoolean (item.field.getName (), item.value);
-		*/
+			editor.putBoolean (item.field.getName (), item.visible);
+
+		editor.putInt (PREFS_KEY_PRECISION, precision);
+		editor.putString (PREFS_KEY_MOOD, mood.name ());
+		editor.apply ();
 	}
 
 	/**
@@ -133,11 +146,12 @@ public class Visibility
 	 */
 	public void loadFromDB ()
 	{
-		// TODO
-		/*
 		for (VisibilityObject item : settings)
-			item.value = getBoolean (item.field.getName ());
-		*/
+			item.visible = prefs.getBoolean (item.field.getName (), true);
+
+		setPrecision (prefs.getInt (PREFS_KEY_PRECISION, 0));
+		setMood (Mood.valueOf (prefs.getString (PREFS_KEY_MOOD,
+				Mood.HAPPY.name ())));
 	}
 
 	//___________________________ Server
