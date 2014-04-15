@@ -32,6 +32,7 @@ public class Visibility
 	private VisibilityObject[] settings;
 	private SharedPreferences prefs;
 
+	private static final String PREFS_KEY_TITLE = "title";
 	private static final String PREFS_KEY_PRECISION = "precisionValue";
 	private static final String PREFS_KEY_MOOD = "moodValue";
 
@@ -132,6 +133,7 @@ public class Visibility
 	public void saveToDB ()
 	{
 		Editor editor = prefs.edit ();
+		editor.putString (PREFS_KEY_TITLE, title);
 
 		for (VisibilityObject item : settings)
 			editor.putBoolean (item.field.getName (), item.visible);
@@ -149,6 +151,7 @@ public class Visibility
 		for (VisibilityObject item : settings)
 			item.visible = prefs.getBoolean (item.field.getName (), true);
 
+		setTitle (prefs.getString (PREFS_KEY_TITLE, name));
 		setPrecision (prefs.getInt (PREFS_KEY_PRECISION, 0));
 		setMood (Mood.valueOf (prefs.getString (PREFS_KEY_MOOD,
 				Mood.HAPPY.name ())));
