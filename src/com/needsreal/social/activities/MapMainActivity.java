@@ -125,6 +125,13 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 		unregisterLocation ();
 	}
 
+	@Override
+	public void onBackPressed ()
+	{
+		Toast.makeText (getApplicationContext (), "TODO",
+				Toast.LENGTH_SHORT).show ();
+	}
+
 	//_________________ GPS
 
 	private void registerGPS ()
