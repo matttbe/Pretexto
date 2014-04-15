@@ -3,12 +3,12 @@ package com.needsreal.social.activities;
 import com.needsreal.social.R;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 public class RegistrationActivity extends Activity
@@ -30,9 +30,8 @@ public class RegistrationActivity extends Activity
 		{
 			public void onClick (View v)
 			{
-				Intent intent = new Intent (RegistrationActivity.this,
-						MapMainActivity.class); // TODO => activity
-				startActivity (intent);
+				Toast.makeText (getApplicationContext (), "TODO",
+						Toast.LENGTH_SHORT).show ();
 			}
 		});
 	}
