@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity
@@ -21,6 +22,18 @@ public class MainActivity extends Activity
 		super.onCreate (savedInstanceState);
 
 		Needsreal.init (getApplicationContext());
+
+		// if can be logged => switch to map
+		if (Needsreal.getCurrentUser ().hasLoginInfo ())
+		{
+			Toast.makeText (getApplicationContext (),
+					"Hello " + Needsreal.getCurrentUser ().getNickname (),
+					Toast.LENGTH_SHORT).show ();
+			Intent intent = new Intent (MainActivity.this,
+					MapMainActivity.class);
+			startActivity (intent);
+			return;
+		}
 
 		// Windows properties
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
