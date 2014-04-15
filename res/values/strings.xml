@@ -31,15 +31,20 @@
     
     <string name="profile_tab2">Visibility</string>
     <string name="modify">Modify</string>
-    
-    
     <string name="profile_tab3">Settings</string>
+
+    <!-- Static Categories -->
     <string name="cat_other">Other</string>
     <string name="cat_other_desc">No category</string>
     <string name="cat_sports">Sports</string>
     <string name="cat_sports_desc">All info about sports</string>
     <string name="cat_music">Music</string>
     <string name="cat_music_desc">Music description</string>
+
+    <!-- Default Visibilities -->
+    <string name="vis_default">Default</string>
+    <string name="vis_full">Full Visible</string>
+    <string name="vis_invisible">Invisible</string>
 </resources>
 
 
