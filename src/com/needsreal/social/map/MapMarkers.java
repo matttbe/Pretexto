@@ -18,6 +18,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.needsreal.social.search.SearchItem;
+import com.needsreal.social.server.MarkersParams;
 import com.needsreal.social.server.Server;
 
 public class MapMarkers
@@ -48,9 +49,9 @@ public class MapMarkers
 
 	private ArrayList<SearchItem> getMarkersForLocation ()
 	{
-		Object[] locationInfo = MapCamera.radiusDistanceCovered (map);
-		return getMarkersForLocation ((Location) locationInfo[1],
-				(Float) locationInfo[0]);
+		MarkersParams locationInfo = MapCamera.radiusDistanceCovered (map);
+		return getMarkersForLocation (locationInfo.getLocation (),
+				locationInfo.getRadius ());
 	}
 
 	/**

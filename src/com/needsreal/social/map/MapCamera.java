@@ -7,6 +7,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.VisibleRegion;
+import com.needsreal.social.server.MarkersParams;
 
 public class MapCamera
 {
@@ -28,9 +29,9 @@ public class MapCamera
 	/**
 	 * Get the radius covered by current view
 	 * @param map, the current map
-	 * @return a distance in meters
+	 * @return MarersParams with a location, a radius and null as request
 	 */
-	public static Object[] radiusDistanceCovered (GoogleMap map)
+	public static MarkersParams radiusDistanceCovered (GoogleMap map)
 	{
 		/* TODO: note: compared only to one side is maybe not the best solution
 		 * e.g: if the device is on the horizontal orientation
@@ -47,6 +48,6 @@ public class MapCamera
 		center.setLatitude (centerCoord.latitude);
 		center.setLongitude (centerCoord.longitude);
 
-		return new Object[] {center.distanceTo (left), center};
+		return new MarkersParams (center, center.distanceTo (left), null);
 	}
 }
