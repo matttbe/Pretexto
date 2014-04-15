@@ -31,6 +31,9 @@ public abstract class AbstractUser
 	{
 		this.hash = hash;
 		this.nickname = nickname;
+		interests = new ArrayList<Interest> ();
+		needs = new ArrayList<Interest> ();
+		contacts = new ArrayList<SocialNetworkInterface> ();
 	}
 
 	/**
@@ -167,7 +170,7 @@ public abstract class AbstractUser
 	}
 
 	/**
-	 * @return the interests
+	 * @return the interests list
 	 */
 	public ArrayList<Interest> getInterests ()
 	{
@@ -175,15 +178,23 @@ public abstract class AbstractUser
 	}
 
 	/**
-	 * @param interests the interests to set
+	 * @param interest the interest to add
 	 */
-	public void setInterests (ArrayList<Interest> interests)
+	public void addInterest (Interest interest)
 	{
-		this.interests = interests;
+		interests.add (interest);
 	}
 
 	/**
-	 * @return the needs
+	 * @param interest the interest to remove
+	 */
+	public void removeInterest (Interest interest)
+	{
+		interests.remove (interest);
+	}
+
+	/**
+	 * @return the needs list
 	 */
 	public ArrayList<Interest> getNeeds ()
 	{
@@ -191,15 +202,23 @@ public abstract class AbstractUser
 	}
 
 	/**
-	 * @param needs the needs to set
+	 * @param need the need to add
 	 */
-	public void setNeeds (ArrayList<Interest> needs)
+	public void addNeed (Interest need)
 	{
-		this.needs = needs;
+		needs.add (need);
 	}
 
 	/**
-	 * @return the contacts
+	 * @param need the need to remove
+	 */
+	public void removeNeed (Interest need)
+	{
+		needs.remove (need);
+	}
+
+	/**
+	 * @return the contacts list
 	 */
 	public ArrayList<SocialNetworkInterface> getContacts ()
 	{
@@ -207,11 +226,19 @@ public abstract class AbstractUser
 	}
 
 	/**
-	 * @param contacts the contacts to set
+	 * @param socialNetwork the social network to add
 	 */
-	public void setContacts (ArrayList<SocialNetworkInterface> contacts)
+	public void addContacts (SocialNetworkInterface socialNetwork)
 	{
-		this.contacts = contacts;
+		contacts.add (socialNetwork);
+	}
+
+	/**
+	 * @param interest the interest to remove
+	 */
+	public void removeContacts (SocialNetworkInterface socialNetwork)
+	{
+		contacts.remove (socialNetwork);
 	}
 
 	/**
