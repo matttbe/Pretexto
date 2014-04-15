@@ -1,5 +1,7 @@
 package com.needsreal.social.profile;
 
+import android.content.Context;
+
 /**
  * The user can specify the visibility of some details of its profile and save
  * the selection with a name.
@@ -25,7 +27,7 @@ public class Visibility
 
 	private VisibilityObject[] settings;
 
-	public Visibility (String name)
+	public Visibility (String name, Context context)
 	{
 		this.name = name;
 

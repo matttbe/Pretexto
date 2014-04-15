@@ -49,24 +49,23 @@ public class VisibilitiesMgr
 	{
 		allVisibilities = new HashSet<String> (3);
 		// Default
-		Visibility visibility = new Visibility (VIS_DEFAULT);
-		visibility.setTitle (context.getString (R.string.vis_default));
+		Visibility visibility = newVisibility (VIS_DEFAULT,
+				context.getString (R.string.vis_default));
 		visibility.setPrecision (10);
-		addAndSaveVisibility (visibility);
+		visibility.saveToDB ();
 
 		setCurrentGlobalVisibility (visibility); // select as default one
 
 		// Full
-		visibility = new Visibility (VIS_FULL);
-		visibility.setTitle (context.getString (R.string.vis_full));
-		addAndSaveVisibility (visibility);
+		visibility = newVisibility (VIS_FULL,
+				context.getString (R.string.vis_full));
 
 		// Invisible
-		visibility = new Visibility (VIS_INVISIBLE);
-		visibility.setTitle (context.getString (R.string.vis_invisible));
+		visibility = newVisibility (VIS_INVISIBLE,
+				context.getString (R.string.vis_invisible));
 		for (VisibilityObject item : visibility.getSettings ())
 			item.visible = false;
-		addAndSaveVisibility (visibility);
+		visibility.saveToDB ();
 
 		sendAll ();
 	}
@@ -78,7 +77,7 @@ public class VisibilitiesMgr
 		boolean foundCurrent = false;
 		for (String visibilityName : allVisibilities)
 		{
-			Visibility visibility = new Visibility (visibilityName);
+			Visibility visibility = new Visibility (visibilityName, context);
 			visibilities.add (visibility);
 			visibility.loadFromDB (); // TODO: Get from Server too
 
@@ -106,6 +105,14 @@ public class VisibilitiesMgr
 		editor.apply ();
 	}
 
+	private Visibility newVisibility (String name, String title)
+	{
+		Visibility visibility = new Visibility (name, context);
+		visibility.setTitle (title);
+		addAndSaveVisibility (visibility);
+		return visibility;
+	}
+
 	/**
 	 * Add a new visibility on the manager
 	 * @param name the title of the visibility
@@ -123,11 +130,7 @@ public class VisibilitiesMgr
 			if (name.equals (visibility))
 				throw new IllegalArgumentException ();
 		}
-		Visibility visibility = new Visibility (name.replaceAll (
-				"[^A-Za-z0-9]", ""));
-		visibility.setTitle (name);
-		addAndSaveVisibility (visibility);
-		return visibility;
+		return newVisibility (name.replaceAll ("[^A-Za-z0-9]", ""), name);
 	}
 
 	/**
