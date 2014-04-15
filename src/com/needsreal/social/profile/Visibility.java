@@ -205,4 +205,14 @@ public class Visibility
 			return field.invoke (userField);
 		}
 	}
+
+	/**
+	 * Remove all data linked to this visibility
+	 */
+	public void clearDB ()
+	{
+		Editor editor = prefs.edit ();
+		editor.clear ();
+		editor.apply ();
+	}
 }

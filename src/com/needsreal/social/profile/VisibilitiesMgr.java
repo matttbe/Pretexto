@@ -47,6 +47,20 @@ public class VisibilitiesMgr
 	}
 
 	/**
+	 * Remove all data from the settings
+	 */
+	public void clear ()
+	{
+		Editor editor = Needsreal.getSettings ().edit ();
+		editor.remove (Needsreal.PREFS_KEY_CURRENT_GLOBAL_VIS);
+		editor.remove (Needsreal.PREFS_KEY_VISIBILITIES);
+		editor.apply ();
+
+		for (Visibility visibility : visibilities)
+			visibility.clearDB ();
+	}
+
+	/**
 	 * Create and load default visibilities
 	 */
 	private void loadFirstTime ()
@@ -151,15 +165,17 @@ public class VisibilitiesMgr
 
 		visibilities.remove (visibility);
 		allVisibilities.remove (visibility.getName ());
-		boolean isCurrent = visibility == currentGlobalVisibility;
-		if (isCurrent)
+		visibility.clearDB ();
+
+		boolean wasCurrent = visibility == currentGlobalVisibility;
+		if (wasCurrent)
 			setCurrentGlobalVisibility (visibilities.get (0));
 
 		Editor editor = Needsreal.getSettings ().edit ();
 		editor.putStringSet (Needsreal.PREFS_KEY_VISIBILITIES, allVisibilities);
 		editor.apply ();
 
-		return isCurrent;
+		return wasCurrent;
 	}
 
 	/**

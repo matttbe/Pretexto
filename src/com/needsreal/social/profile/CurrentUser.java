@@ -130,6 +130,9 @@ public class CurrentUser extends AbstractUser
 		editor.putString (PREFS_KEY_HASH, hash);
 		editor.putString (PREFS_KEY_NICKNAME, nickname);
 		editor.apply ();
+
+		// TODO: load settings from the server
+
 		return true;
 	}
 
@@ -138,6 +141,8 @@ public class CurrentUser extends AbstractUser
 		Editor editor = prefs.edit ();
 		editor.clear ();
 		editor.apply ();
+
+		visibilities.clear ();
 
 		token = null;
 		hash = null;
