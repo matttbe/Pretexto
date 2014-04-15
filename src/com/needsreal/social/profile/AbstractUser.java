@@ -9,8 +9,8 @@ import com.needsreal.social.socialnetwork.SocialNetworkInterface;
 
 public abstract class AbstractUser
 {
-	private String hash;
-	private String nickname;
+	protected String hash;
+	protected String nickname;
 
 	protected String firstname; // John
 	protected String lastname; // Doe
@@ -27,10 +27,8 @@ public abstract class AbstractUser
 	protected ArrayList<Interest> needs;
 	protected ArrayList<SocialNetworkInterface> contacts;
 
-	public AbstractUser (String hash, String nickname)
+	public AbstractUser ()
 	{
-		this.hash = hash;
-		this.nickname = nickname;
 		interests = new ArrayList<Interest> ();
 		needs = new ArrayList<Interest> ();
 		contacts = new ArrayList<SocialNetworkInterface> ();

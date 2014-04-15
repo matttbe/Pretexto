@@ -14,7 +14,9 @@ public class User extends AbstractUser
 
 	public User (SearchItem searchItem)
 	{
-		super (searchItem.getHash (), searchItem.getName ());
+		super ();
+		this.hash = searchItem.getHash ();
+		this.nickname = searchItem.getName ();
 		this.marker = searchItem.getMarker ();
 		this.shortDesc = searchItem.getShortDescription ();
 	}
