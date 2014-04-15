@@ -60,8 +60,8 @@ public class VisibilityFragment extends Fragment
 
 	private ListAdapter buildVisibilityView ()
 	{
-		ArrayList<Visibility> visibilities = Needsreal.getVisibilitiesMgr ()
-				.getAll ();
+		ArrayList<Visibility> visibilities = Needsreal.getCurrentUser ()
+				.getVisibilitiesMgr ().getAll ();
 		
 		String[] objects = {"T1", "T2"};
 		//return new ArrayAdapter<String>(getActivity (), R.layout.visibility_item, R.id.text_vis_item, objects);

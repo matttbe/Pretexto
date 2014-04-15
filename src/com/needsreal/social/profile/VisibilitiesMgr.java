@@ -10,7 +10,6 @@ import com.needsreal.social.R;
 import com.needsreal.social.profile.Visibility.VisibilityObject;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
 
@@ -20,7 +19,6 @@ public class VisibilitiesMgr
 	private Visibility currentGlobalVisibility;
 	private Set<String> allVisibilities;
 
-	private final SharedPreferences prefs;
 	private final Context context;
 
 	// Keys for the settings
@@ -28,15 +26,21 @@ public class VisibilitiesMgr
 	private static final String VIS_FULL = "full";
 	private static final String VIS_INVISIBLE = "invisible";
 
-	public VisibilitiesMgr (Context context, SharedPreferences settings)
+	public VisibilitiesMgr (Context context)
 	{
 		visibilities = new ArrayList<Visibility> ();
 		this.context = context;
-		this.prefs = settings;
+	}
 
-		allVisibilities = prefs.getStringSet (Needsreal.PREFS_KEY_VISIBILITIES,
-				null);
-		if (allVisibilities == null || allVisibilities.size () == 0) // first time we launch it
+	/**
+	 * Init the visibilities manager by loading all visibilities
+	 */
+	public void init ()
+	{
+		allVisibilities = Needsreal.getSettings ().getStringSet (
+				Needsreal.PREFS_KEY_VISIBILITIES, null);
+		// first time we launch it
+		if (allVisibilities == null || allVisibilities.size () == 0)
 			loadFirstTime ();
 		else
 			loadFromDB ();
@@ -72,7 +76,7 @@ public class VisibilitiesMgr
 
 	private void loadFromDB ()
 	{
-		String currentVisibility = prefs.getString (
+		String currentVisibility = Needsreal.getSettings ().getString (
 				Needsreal.PREFS_KEY_CURRENT_GLOBAL_VIS, VIS_DEFAULT);
 		boolean foundCurrent = false;
 		for (String visibilityName : allVisibilities)
@@ -100,7 +104,7 @@ public class VisibilitiesMgr
 		allVisibilities.add (visibility.getName ());
 		visibility.saveToDB ();
 
-		Editor editor = prefs.edit ();
+		Editor editor = Needsreal.getSettings ().edit ();
 		editor.putStringSet (Needsreal.PREFS_KEY_VISIBILITIES, allVisibilities);
 		editor.apply ();
 	}
@@ -151,7 +155,7 @@ public class VisibilitiesMgr
 		if (isCurrent)
 			setCurrentGlobalVisibility (visibilities.get (0));
 
-		Editor editor = prefs.edit ();
+		Editor editor = Needsreal.getSettings ().edit ();
 		editor.putStringSet (Needsreal.PREFS_KEY_VISIBILITIES, allVisibilities);
 		editor.apply ();
 
@@ -199,7 +203,7 @@ public class VisibilitiesMgr
 	{
 		currentGlobalVisibility = visibility;
 
-		Editor editor = prefs.edit ();
+		Editor editor = Needsreal.getSettings ().edit ();
 		editor.putString (Needsreal.PREFS_KEY_CURRENT_GLOBAL_VIS,
 				visibility.getName ());
 		editor.apply ();

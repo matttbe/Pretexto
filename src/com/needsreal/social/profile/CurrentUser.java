@@ -18,6 +18,7 @@ public class CurrentUser extends AbstractUser
 
 	private LatLng lastPosition;
 
+	private VisibilitiesMgr visibilities;
 	private SharedPreferences prefs;
 
 	private static final String PREFS_NAME_USER = "User";
@@ -45,6 +46,8 @@ public class CurrentUser extends AbstractUser
 				Context.MODE_PRIVATE);
 		hasLogin = prefs.contains (PREFS_KEY_HASH) &&
 				prefs.contains (PREFS_KEY_TOKEN);
+
+		visibilities = new VisibilitiesMgr (context);
 
 		// load settings if we have a login
 		if (hasLogin)
@@ -80,6 +83,8 @@ public class CurrentUser extends AbstractUser
 		float latitude = prefs.getFloat (PREFS_KEY_LATITUDE, 0);
 		float longitude = prefs.getFloat (PREFS_KEY_LONGITUDE, 0);
 		lastPosition = new LatLng (latitude, longitude);
+
+		visibilities.init ();
 	}
 
 	public void savePrefs ()
@@ -166,6 +171,11 @@ public class CurrentUser extends AbstractUser
 	public void setPosition (LatLng position)
 	{
 		this.lastPosition = position;
+	}
+
+	public VisibilitiesMgr getVisibilitiesMgr ()
+	{
+		return visibilities;
 	}
 
 }

@@ -4,14 +4,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.needsreal.social.profile.CurrentUser;
-import com.needsreal.social.profile.VisibilitiesMgr;
 import com.needsreal.social.search.StaticCategories;
 
 
 public class Needsreal
 {
 	private static StaticCategories categories;
-	private static VisibilitiesMgr visibilities;
 	private static SharedPreferences settings;
 	private static CurrentUser user;
 
@@ -37,7 +35,6 @@ public class Needsreal
 		settings = context.getSharedPreferences (PREFS_NAME_GLOBAL,
 				Context.MODE_PRIVATE);
 		categories = new StaticCategories (context);
-		visibilities = new VisibilitiesMgr (context, settings);
 		user = new CurrentUser (context);
 	}
 
@@ -46,13 +43,19 @@ public class Needsreal
 		return categories;
 	}
 
-	public static VisibilitiesMgr getVisibilitiesMgr ()
-	{
-		return visibilities;
-	}
-
+	/**
+	 * @return the current user
+	 */
 	public static CurrentUser getCurrentUser ()
 	{
 		return user;
+	}
+
+	/**
+	 * @return the global settings
+	 */
+	public static SharedPreferences getSettings ()
+	{
+		return settings;
 	}
 }
