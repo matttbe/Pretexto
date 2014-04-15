@@ -8,7 +8,6 @@ import android.util.Log;
 public enum UserFields
 {
 	//         method       has list? specific value?
-	HASH      ("Hash",        false, false),
 	NICKNAME  ("Nickname",    false, false),
 	FIRSTNAME ("FirstName",   false, false),
 	LASTNAME  ("LastName",    false, false),
