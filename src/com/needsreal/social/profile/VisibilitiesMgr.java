@@ -51,6 +51,7 @@ public class VisibilitiesMgr
 		// Default
 		Visibility visibility = new Visibility (VIS_DEFAULT);
 		visibility.setTitle (context.getString (R.string.vis_default));
+		visibility.setPrecision (10);
 		addAndSaveVisibility (visibility);
 
 		setCurrentGlobalVisibility (visibility); // select as default one
@@ -60,7 +61,7 @@ public class VisibilitiesMgr
 		visibility.setTitle (context.getString (R.string.vis_full));
 		addAndSaveVisibility (visibility);
 
-		// Default
+		// Invisible
 		visibility = new Visibility (VIS_INVISIBLE);
 		visibility.setTitle (context.getString (R.string.vis_invisible));
 		for (VisibilityObject item : visibility.getSettings ())
