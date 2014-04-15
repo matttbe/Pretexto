@@ -31,27 +31,23 @@ public class VisibilityFragment extends Fragment
 				container, false);
 		ActionSlideExpandableListView status_list = (ActionSlideExpandableListView) V
 				.findViewById (R.id.visibility_expandable_list);
-		
-		
-		status_list.setAdapter(
-	            new SlideExpandableListAdapter(
-	                buildVisibilityView (),
-	                R.id.expandable_toggle_button,
-	                R.id.expandable
-	            )
-	        );
-		
-		Button b= (Button) V.findViewById (R.id.add_vis_button);
-		b.setOnClickListener (new OnClickListener()
+
+		status_list.setAdapter (new SlideExpandableListAdapter (
+				buildVisibilityView (), R.id.expandable_toggle_button,
+				R.id.expandable));
+
+		Button b = (Button) V.findViewById (R.id.add_vis_button);
+		b.setOnClickListener (new OnClickListener ()
 		{
-			
+
 			@Override
 			public void onClick (View v)
 			{
-				NewVisibilityObjectFragmentDialog newFragment = NewVisibilityObjectFragmentDialog.newInstance();
-			    newFragment.show (getFragmentManager (), "LOL");
+				NewVisibilityObjectFragmentDialog newFragment = NewVisibilityObjectFragmentDialog
+						.newInstance ();
+				newFragment.show (getFragmentManager (), getActivity ()
+						.getString (R.string.add_visibility_object));
 
-				
 			}
 		});
 
@@ -62,10 +58,12 @@ public class VisibilityFragment extends Fragment
 	{
 		ArrayList<Visibility> visibilities = Needsreal.getCurrentUser ()
 				.getVisibilitiesMgr ().getAll ();
-		
-		String[] objects = {"T1", "T2"};
-		//return new ArrayAdapter<String>(getActivity (), R.layout.visibility_item, R.id.text_vis_item, objects);
-		return new ExpandableVisibilityListAdapter (getActivity(), R.layout.visibility_item, R.id.text_vis_item , visibilities);
+
+		String[] objects = { "T1", "T2" };
+		// return new ArrayAdapter<String>(getActivity (),
+		// R.layout.visibility_item, R.id.text_vis_item, objects);
+		return new ExpandableVisibilityListAdapter (getActivity (),
+				R.layout.visibility_item, R.id.text_vis_item, visibilities);
 
 	}
 
