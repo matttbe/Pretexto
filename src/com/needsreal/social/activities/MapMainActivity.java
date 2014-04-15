@@ -169,7 +169,8 @@ public class MapMainActivity extends FragmentActivity implements LocationListene
 		{
 			Log.d ("GPS", "onCameraChange: " + position.target + " ; zoom: "
 					+ position.zoom + " ; dist: "
-					+ MapCamera.radiusDistanceCovered (map)[0] + " meters");
+					+ MapCamera.radiusDistanceCovered (map).getRadius ()
+					+ " meters");
 			markers.updateMarkers (false);
 		}
 	};

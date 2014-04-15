@@ -9,6 +9,11 @@ public class MarkersParams
 	private float radius;
 	private String request;
 
+	/**
+	 * @param location the location of the center point
+	 * @param radius the radius that we have to cover
+	 * @param request the request that the user made
+	 */
 	public MarkersParams (Location location, float radius, String request)
 	{
 		this.location = location;
