@@ -31,7 +31,7 @@ public class ServerRequests
 		for (int i = 0; i < 15; i++)
 		{
 			double oneMeter = 0.00000898 * 1.05; // with extras
-			String hash = Integer.toString (random.nextInt (200));
+			String hash = Integer.toString (random.nextInt (500));
 			double lat = latitude + (random.nextBoolean () ? 1.0 : -1.0)
 					* random.nextFloat () * oneMeter * radius;
 			double lon = longitude + (random.nextBoolean () ? 1.0 : -1.0)
