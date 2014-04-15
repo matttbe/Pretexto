@@ -15,7 +15,7 @@ public class Needsreal
 
 	private static boolean bInit = false;
 
-	public static final String PREFS_NAME_GLOBAL = "__GLOBAL__";
+	public static final String PREFS_NAME_GLOBAL = "GLOBAL";
 	public static final String PREFS_KEY_VISIBILITIES = "Visibilities";
 	public static final String PREFS_KEY_CURRENT_GLOBAL_VIS = "CurrGlobVis";
 
