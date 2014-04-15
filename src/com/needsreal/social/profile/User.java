@@ -68,6 +68,14 @@ public class User extends AbstractUser
 	}
 
 	/**
+	 * @return the mood
+	 */
+	public int getMoodDrawable ()
+	{
+		return mood.getDrawable ();
+	}
+
+	/**
 	 * @param mood the mood to set
 	 */
 	public void setMood (Mood mood)
