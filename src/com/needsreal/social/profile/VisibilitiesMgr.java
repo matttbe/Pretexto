@@ -38,4 +38,21 @@ public class VisibilitiesMgr
 		visibilities.remove (visibility);
 		// TODO rm from DB
 	}
+
+	public ArrayList<Visibility> getAll ()
+	{
+		return visibilities;
+	}
+
+	public void saveAll ()
+	{
+		for (Visibility visibility : visibilities)
+			visibility.saveToDB ();
+	}
+
+	public void sendAll ()
+	{
+		for (Visibility visibility : visibilities)
+			visibility.sendToServer ();
+	}
 }
