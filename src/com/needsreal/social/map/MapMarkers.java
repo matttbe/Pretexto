@@ -26,7 +26,8 @@ public class MapMarkers
 	private GoogleMap map;
 	private Map<String, SearchItem> hashMap;
 
-	private static final int maxSize = 50;
+	private static final int MAXSIZE = 50;
+	private static final int ANIMATION_SPEED = 750;
 
 	public MapMarkers (GoogleMap map)
 	{
@@ -97,7 +98,7 @@ public class MapMarkers
 	private void removeOldMarkers ()
 	{
 		// Remove extras
-		int nbToRm = hashMap.size () - maxSize;
+		int nbToRm = hashMap.size () - MAXSIZE;
 		if (nbToRm > 0)
 		{
 			String keysToRm[] = new String[nbToRm];
@@ -117,12 +118,10 @@ public class MapMarkers
 	public static void moveWithAnimations (final Marker marker,
 			final LatLng newLocation)
 	{
-
 		final LatLng oldPosition = marker.getPosition ();
 		final double oldLatitude = oldPosition.latitude;
 		final double oldLongitude = oldPosition.longitude;
 
-		final long duration = 500;
 		final long start = SystemClock.uptimeMillis ();
 		final Interpolator interpolator = new LinearInterpolator ();
 		final Handler handler = new Handler ();
@@ -133,16 +132,15 @@ public class MapMarkers
 			{
 			// http://ddewaele.github.io/GoogleMapsV2WithActionBarSherlock/part3
 				long elapsed = SystemClock.uptimeMillis () - start;
-				float t = interpolator.getInterpolation ((float) elapsed
-						/ duration);
+				double t = interpolator.getInterpolation ((float) elapsed
+						/ ANIMATION_SPEED);
 				double lat = t * newLocation.latitude + (1 - t) * oldLatitude;
 				double lng = t * newLocation.longitude + (1 - t) * oldLongitude;
 				marker.setPosition (new LatLng (lat, lng));
 				if (t < 1.0)
-				{
-					marker.setPosition (newLocation);
 					handler.postDelayed (this, 16);
-				}
+				else
+					marker.setPosition (newLocation);
 			}
 		});
 	}
