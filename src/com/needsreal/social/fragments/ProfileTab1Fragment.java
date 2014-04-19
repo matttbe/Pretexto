@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.needsreal.social.R;
 import com.needsreal.social.profile.CurrentUser;
-import com.needsreal.social.profile.Visibility.VisibilityObject;
 
 
 public class ProfileTab1Fragment extends Fragment

@@ -11,10 +11,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.needsreal.social.R;
 import com.needsreal.social.profile.Visibility;
+
 
 public class ExpandableVisibilityListAdapter extends ArrayAdapter<Visibility>
 {

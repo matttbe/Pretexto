@@ -1,7 +1,5 @@
 package com.needsreal.social.ui_utils;
 
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Switch;
 
-import com.needsreal.social.Needsreal;
 import com.needsreal.social.R;
 import com.needsreal.social.profile.Visibility.VisibilityObject;
 

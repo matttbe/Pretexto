@@ -2,7 +2,6 @@ package com.needsreal.social.fragments;
 
 import java.util.ArrayList;
 
-import android.support.v4.app.DialogFragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -59,7 +58,7 @@ public class VisibilityFragment extends Fragment
 		ArrayList<Visibility> visibilities = CurrentUser.getInstance ()
 				.getVisibilitiesMgr ().getAll ();
 
-		String[] objects = { "T1", "T2" };
+		// String[] objects = { "T1", "T2" };
 		// return new ArrayAdapter<String>(getActivity (),
 		// R.layout.visibility_item, R.id.text_vis_item, objects);
 		return new ExpandableVisibilityListAdapter (getActivity (),
