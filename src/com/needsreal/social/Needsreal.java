@@ -9,9 +9,7 @@ import com.needsreal.social.search.StaticCategories;
 
 public class Needsreal
 {
-	private static StaticCategories categories;
 	private static SharedPreferences settings;
-	private static CurrentUser user;
 
 	private static boolean bInit = false;
 
@@ -34,21 +32,10 @@ public class Needsreal
 		bInit = true;
 		settings = context.getSharedPreferences (PREFS_NAME_GLOBAL,
 				Context.MODE_PRIVATE);
-		categories = new StaticCategories (context);
-		user = new CurrentUser (context);
-	}
 
-	public static StaticCategories getCategories ()
-	{
-		return categories;
-	}
-
-	/**
-	 * @return the current user
-	 */
-	public static CurrentUser getCurrentUser ()
-	{
-		return user;
+		// Initialize some classes
+		StaticCategories.init (context);
+		CurrentUser.init (context);
 	}
 
 	/**

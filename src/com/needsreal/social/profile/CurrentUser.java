@@ -9,6 +9,14 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class CurrentUser extends AbstractUser
 {
+	// Singleton stuff
+	private static CurrentUser sInstance;
+	public static CurrentUser getInstance () { return sInstance; }
+	public static void init (Context context)
+	{
+		sInstance = new CurrentUser (context);
+	}
+
 	/*
 	 * We need to save only a token given by the server to not save the
 	 * password in the settings files

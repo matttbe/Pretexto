@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListAdapter;
 
-import com.needsreal.social.Needsreal;
 import com.needsreal.social.R;
+import com.needsreal.social.profile.CurrentUser;
 import com.needsreal.social.profile.Visibility;
 import com.needsreal.social.ui_utils.ExpandableVisibilityListAdapter;
 import com.tjerkw.slideexpandable.library.ActionSlideExpandableListView;
@@ -56,7 +56,7 @@ public class VisibilityFragment extends Fragment
 
 	private ListAdapter buildVisibilityView ()
 	{
-		ArrayList<Visibility> visibilities = Needsreal.getCurrentUser ()
+		ArrayList<Visibility> visibilities = CurrentUser.getInstance ()
 				.getVisibilitiesMgr ().getAll ();
 
 		String[] objects = { "T1", "T2" };

@@ -1,7 +1,7 @@
 package com.needsreal.social.activities;
 
-import com.needsreal.social.Needsreal;
 import com.needsreal.social.R;
+import com.needsreal.social.profile.CurrentUser;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -52,7 +52,7 @@ public class ConnectionActivity extends Activity
 					return;
 				}
 
-				Needsreal.getCurrentUser ().login (nickname, password);
+				CurrentUser.getInstance ().login (nickname, password);
 				Toast.makeText (getApplicationContext (), "New user created",
 						Toast.LENGTH_SHORT).show ();
 

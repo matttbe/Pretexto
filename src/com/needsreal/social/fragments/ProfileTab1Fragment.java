@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.needsreal.social.Needsreal;
 import com.needsreal.social.R;
 import com.needsreal.social.profile.CurrentUser;
 import com.needsreal.social.profile.Visibility.VisibilityObject;
@@ -22,7 +21,7 @@ public class ProfileTab1Fragment extends Fragment
 			Bundle savedInstanceState)
 	{
 		View v = inflater.inflate (R.layout.profile_tab1, container, false);
-		CurrentUser user = Needsreal.getCurrentUser ();
+		CurrentUser user = CurrentUser.getInstance ();
 		TextView t = (TextView) v.findViewById (R.id.profiletab_nickname_value);
 		t.setText (user.getNickname ());
 		t = (TextView) v.findViewById (R.id.profiletab_name_value);

@@ -2,6 +2,7 @@ package com.needsreal.social.activities;
 
 import com.needsreal.social.Needsreal;
 import com.needsreal.social.R;
+import com.needsreal.social.profile.CurrentUser;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -24,10 +25,10 @@ public class MainActivity extends Activity
 		Needsreal.init (getApplicationContext());
 
 		// if can be logged => switch to map
-		if (Needsreal.getCurrentUser ().hasLoginInfo ())
+		if (CurrentUser.getInstance ().hasLoginInfo ())
 		{
 			Toast.makeText (getApplicationContext (),
-					"Hello " + Needsreal.getCurrentUser ().getNickname (),
+					"Hello " + CurrentUser.getInstance ().getNickname (),
 					Toast.LENGTH_SHORT).show ();
 			Intent intent = new Intent (MainActivity.this,
 					MapMainActivity.class);

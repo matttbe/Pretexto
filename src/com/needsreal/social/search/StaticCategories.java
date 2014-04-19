@@ -6,6 +6,14 @@ import android.content.Context;
 
 public class StaticCategories
 {
+	// Singleton stuff
+	private static StaticCategories sInstance;
+	public static StaticCategories getInstance () { return sInstance; }
+	public static void init (Context context)
+	{
+		sInstance = new StaticCategories (context);
+	}
+
 	private static Category[] categories;
 
 	public StaticCategories (Context context)
