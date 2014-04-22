@@ -38,7 +38,6 @@ public class CurrentUser extends AbstractUser
 	private static final String PREFS_KEY_SHORTDESC = "shortDesc";
 	private static final String PREFS_KEY_DESC = "desc";
 	private static final String PREFS_KEY_ACTIPRO = "activityPro";
-	private static final String PREFS_KEY_CITY = "city";
 	private static final String PREFS_KEY_POSTCODE = "post";
 	private static final String PREFS_KEY_COUNTRY = "country";
 	// private static final String PREFS_KEY_INTERESTS = "interests";
@@ -82,7 +81,6 @@ public class CurrentUser extends AbstractUser
 		shortDesc = prefs.getString (PREFS_KEY_SHORTDESC, null);
 		description = prefs.getString (PREFS_KEY_DESC, null);
 		activityPro = prefs.getString (PREFS_KEY_ACTIPRO, null);
-		city = prefs.getString (PREFS_KEY_CITY, null);
 		postcode = prefs.getInt (PREFS_KEY_POSTCODE, 0);
 		country = prefs.getInt (PREFS_KEY_COUNTRY, 0);
 		// interests = prefs.getStringSet (PREFS_KEY_INTERESTS, null); // TODO
@@ -106,7 +104,6 @@ public class CurrentUser extends AbstractUser
 		editor.putString (PREFS_KEY_SHORTDESC, shortDesc);
 		editor.putString (PREFS_KEY_DESC, description);
 		editor.putString (PREFS_KEY_ACTIPRO, activityPro);
-		editor.putString (PREFS_KEY_CITY, city);
 		editor.putInt (PREFS_KEY_POSTCODE, postcode);
 		editor.putInt (PREFS_KEY_COUNTRY, country);
 		// editor.putStringSet (PREFS_KEY_INTERESTS, null); // TODO
@@ -160,7 +157,6 @@ public class CurrentUser extends AbstractUser
 		shortDesc = null;
 		description = null;
 		activityPro = null;
-		city = null;
 		postcode = 0;
 		country = 0;
 		interests = null;

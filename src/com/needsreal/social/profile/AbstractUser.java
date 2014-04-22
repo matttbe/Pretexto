@@ -19,7 +19,6 @@ public abstract class AbstractUser
 	protected String description;
 	protected String activityPro;
 
-	protected String city;
 	protected int postcode;
 	protected int country; // check Locale
 
@@ -112,22 +111,6 @@ public abstract class AbstractUser
 	public void setActivityPro (String activityPro)
 	{
 		this.activityPro = activityPro;
-	}
-
-	/**
-	 * @return the city
-	 */
-	public String getCity ()
-	{
-		return city;
-	}
-
-	/**
-	 * @param city the city to set
-	 */
-	public void setCity (String city)
-	{
-		this.city = city;
 	}
 
 	/**

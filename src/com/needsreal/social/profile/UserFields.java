@@ -14,7 +14,6 @@ public enum UserFields
 	SHORTDESC ("ShortDesc",   false, false),
 	DESC      ("Description", false, false),
 	ACTIPRO   ("ActivityPro", false, false),
-	CITY      ("City",        false, false),
 	POSTCODE  ("Postcode",    false, false),
 	COUNTRY   ("Country",     false, false),
 	POSITION  ("Position",    false, false),
